@@ -1,36 +1,9 @@
 import ArticleCard from "./ArticleCard";
+import { getPosts } from "@/app/lib/wordpress";
 
-const articles = [
-  {
-    category: "CIUDAD",
-    title: "Juárez frente a los cambios que vienen",
-    excerpt:
-      "Una ciudad que crece, cambia y enfrenta nuevos desafíos todos los días.",
-    author: "Redacción paso656",
-    date: "30 AGO 2026",
-    image: "/images/article-city.png",
-  },
-  {
-    category: "OPINIÓN",
-    title: "Lo que la frontera todavía tiene que decir",
-    excerpt:
-      "Más allá de las noticias del día existe una conversación que merece ser escuchada.",
-    author: "Redacción paso656",
-    date: "29 AGO 2026",
-    image: "/images/article-opinion.png",
-  },
-  {
-    category: "POLÍTICA",
-    title: "Las decisiones que están cambiando la ciudad",
-    excerpt:
-      "Una mirada a los temas que definirán el futuro inmediato de Juárez.",
-    author: "Redacción paso656",
-    date: "28 AGO 2026",
-    image: "/images/article-politica.png",
-  },
-];
+export default async function LatestArticles() {
+  const articles = await getPosts();
 
-export default function LatestArticles() {
   return (
     <section className="latest-articles">
       <div className="latest-header">
@@ -44,7 +17,16 @@ export default function LatestArticles() {
 
       <div className="articles-grid">
         {articles.map((article) => (
-          <ArticleCard key={article.title} {...article} />
+          <ArticleCard
+            key={article.id}
+            slug={article.slug}
+            category={article.category.toUpperCase()}
+            title={article.title}
+            excerpt={article.excerpt}
+            author={article.author}
+            date={article.date}
+            image={article.image}
+          />
         ))}
       </div>
     </section>

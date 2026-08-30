@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 type ArticleCardProps = {
+  slug: string;
   category: string;
   title: string;
   excerpt: string;
@@ -10,6 +11,7 @@ type ArticleCardProps = {
 };
 
 export default function ArticleCard({
+  slug,
   category,
   title,
   excerpt,
@@ -19,7 +21,7 @@ export default function ArticleCard({
 }: ArticleCardProps) {
   return (
     <article className="article-card">
-      <a href="#" className="article-card-image">
+      <a href={`/articulos/${slug}`} className="article-card-image">
         <Image
           src={image}
           alt={title}
@@ -32,7 +34,7 @@ export default function ArticleCard({
         <span className="article-card-category">{category}</span>
 
         <h2>
-          <a href="#">{title}</a>
+          <a href={`/articulos/${slug}`}>{title}</a>
         </h2>
 
         <p>{excerpt}</p>

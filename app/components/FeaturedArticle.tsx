@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function FeaturedArticle() {
   return (
     <section className="featured-article">
@@ -20,9 +22,13 @@ export default function FeaturedArticle() {
       </div>
 
       <div className="featured-image">
-        <div className="image-placeholder">
-          IMAGEN
-        </div>
+        <Image
+          src="/images/hero-juarez.png"
+          alt="Vista urbana de Ciudad Juárez"
+          width={1200}
+          height={800}
+          priority
+        />
       </div>
     </section>
   );

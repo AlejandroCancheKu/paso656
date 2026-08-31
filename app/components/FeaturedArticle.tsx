@@ -30,13 +30,14 @@ export default async function FeaturedArticle() {
       </div>
 
       <div className="featured-image">
-        <Image
-          src={article.image}
-          alt={article.title}
-          width={1200}
-          height={800}
-          priority
-        />
+      <Image
+        src={article.image}
+        alt={article.title}
+        width={1200}
+        height={800}
+        priority
+        loading="eager"
+      />
       </div>
     </section>
   );

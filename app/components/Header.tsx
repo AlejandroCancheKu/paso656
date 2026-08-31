@@ -36,21 +36,28 @@ export default function Header() {
           </Link>
 
           <Link
-            href="/articulos/opinion"
+            href="/articulos"
+            onClick={() => setMenuOpen(false)}
+          >
+            Artículos
+          </Link>
+
+          <Link
+            href="/articulos?categoria=opinion"
             onClick={() => setMenuOpen(false)}
           >
             Opinión
           </Link>
 
           <Link
-            href="/articulos/ciudad"
+            href="/articulos?categoria=ciudad"
             onClick={() => setMenuOpen(false)}
           >
             Ciudad
           </Link>
 
           <Link
-            href="/articulos/politica"
+            href="/articulos?categoria=politica"
             onClick={() => setMenuOpen(false)}
           >
             Política

@@ -244,8 +244,6 @@ body {
 
 
 
-
-
 .latest-articles {
   max-width: 1400px;
   margin: 0 auto;
@@ -1308,5 +1306,75 @@ body {
 
   .related-info h3 {
     font-size: 22px;
+  }
+}
+
+
+/* CSS ARTICLE-FILTER ---------------------------------*/
+
+/* ================================
+   FILTROS DEL ARCHIVO
+================================ */
+
+.article-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 30px 0 40px;
+  flex-wrap: wrap;
+}
+
+.article-filters button {
+  border: 1px solid #d8d4ce;
+  background: transparent;
+  padding: 9px 18px;
+  color: #77736d;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.article-filters button:hover {
+  border-color: #8c1d18;
+  color: #8c1d18;
+}
+
+.article-filters button.active {
+  border-color: #8c1d18;
+  background: #8c1d18;
+  color: #ffffff;
+}
+
+/* ================================
+   SIN PUBLICACIONES
+================================ */
+
+.no-articles {
+  margin: 60px 0;
+  color: #77736d;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .article-filters {
+    gap: 8px;
+    margin: 25px 0 32px;
+  }
+
+  .article-filters button {
+    padding: 8px 14px;
+    font-size: 10px;
   }
 }

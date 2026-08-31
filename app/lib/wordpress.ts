@@ -13,6 +13,7 @@ export type Article = {
   category: string;
   author: string;
   date: string;
+  dateRaw: string;
   image: string;
 };
 
@@ -52,6 +53,7 @@ export async function getPosts(perPage: number = 100): Promise<Article[]> {
         year: "numeric",
       })
       .toUpperCase(),
+    dateRaw: post.date,
     image:
       post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
       "/images/article-city.png",
@@ -94,6 +96,7 @@ export async function searchPosts(query: string): Promise<Article[]> {
         year: "numeric",
       })
       .toUpperCase(),
+    dateRaw: post.date,
     image:
       post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
       "/images/article-city.png",

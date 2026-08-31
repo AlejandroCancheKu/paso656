@@ -1,10 +1,34 @@
 import Header from "@/app/components/Header";
 import ArticleCard from "@/app/components/ArticleCard";
+import ArticleFilters from "@/app/components/ArticleFilters";
 import { getPosts } from "@/app/lib/wordpress";
 
-export default async function ArticlesPage() {
+type ArticlesPageProps = {
+  searchParams: Promise<{
+    categoria?: string;
+  }>;
+};
+
+export default async function ArticlesPage({
+  searchParams,
+}: ArticlesPageProps) {
+  const { categoria } = await searchParams;
+
   const articles = await getPosts();
 
+  const normalizeCategory = (value: string) =>
+    value
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+  const filteredArticles = categoria
+    ? articles.filter(
+        (article) =>
+          normalizeCategory(article.category) ===
+          normalizeCategory(categoria)
+      )
+    : articles;
   return (
     <>
       <Header />
@@ -17,8 +41,10 @@ export default async function ArticlesPage() {
           </div>
         </div>
 
+        <ArticleFilters />
+
         <div className="articles-grid">
-          {articles.map((article) => (
+          {filteredArticles.map((article) => (
             <ArticleCard
               key={article.id}
               slug={article.slug}
@@ -31,6 +57,12 @@ export default async function ArticlesPage() {
             />
           ))}
         </div>
+
+        {filteredArticles.length === 0 && (
+          <p className="no-articles">
+            No hay publicaciones en esta categoría.
+          </p>
+        )}
       </main>
     </>
   );

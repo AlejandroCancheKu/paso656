@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/app/components/Header";
 import ShareButtons from "@/app/components/ShareButtons";
 import RelatedArticles from "@/app/components/RelatedArticles";
+import ArticleSchema from "@/app/components/ArticleSchema";
 import {
   getPosts,
   getReadingTime,
@@ -92,6 +93,9 @@ export default async function ArticlePage({
       <Header />
 
       <main className="article-page">
+
+        <ArticleSchema article={article} />
+
         <header className="article-header">
           <span className="article-category">
             {article.category.toUpperCase()}

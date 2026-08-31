@@ -3,6 +3,7 @@ import { getPosts } from "@/app/lib/wordpress";
 
 export default async function LatestArticles() {
   const articles = await getPosts();
+  const latestArticles = articles.slice(1, 4);
 
   return (
     <section className="latest-articles">
@@ -12,11 +13,11 @@ export default async function LatestArticles() {
           <h2>Últimas publicaciones</h2>
         </div>
 
-        <a href="/articulos">Ver todas →</a>
+        <a href="/articulos">Ver todas</a>
       </div>
 
       <div className="articles-grid">
-        {articles.map((article) => (
+        {latestArticles.map((article) => (
           <ArticleCard
             key={article.id}
             slug={article.slug}

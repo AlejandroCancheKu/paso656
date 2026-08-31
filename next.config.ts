@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "darkgreen-mole-905123.hostingersite.com",
+        hostname: "paso656.com",
       },
     ],
   },

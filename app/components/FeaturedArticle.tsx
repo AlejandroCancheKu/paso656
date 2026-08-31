@@ -1,30 +1,38 @@
 import Image from "next/image";
+import Link from "next/link";
+import { getPosts } from "@/app/lib/wordpress";
 
-export default function FeaturedArticle() {
+export default async function FeaturedArticle() {
+  const articles = await getPosts();
+  const article = articles[0];
+
+  if (!article) {
+    return null;
+  }
+
   return (
     <section className="featured-article">
       <div className="featured-content">
-        <span className="featured-category">OPINIÓN</span>
+        <span className="featured-category">
+          {article.category.toUpperCase()}
+        </span>
 
-        <h1>
-          Ciudad Juárez no necesita más ruido.
-          Necesita nuevas ideas.
-        </h1>
+        <h1>{article.title}</h1>
 
-        <p>
-          Una mirada distinta a lo que ocurre en la frontera,
-          desde quienes la viven, la cuestionan y la construyen.
-        </p>
+        <p>{article.excerpt}</p>
 
-        <a href="/opinion" className="featured-link">
+        <Link
+          href={`/articulos/${article.slug}`}
+          className="featured-link"
+        >
           Leer artículo →
-        </a>
+        </Link>
       </div>
 
       <div className="featured-image">
         <Image
-          src="/images/hero-juarez.png"
-          alt="Vista urbana de Ciudad Juárez"
+          src={article.image}
+          alt={article.title}
           width={1200}
           height={800}
           priority

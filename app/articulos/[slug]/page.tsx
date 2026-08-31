@@ -34,7 +34,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${article.title} | paso656`,
+    title: article.title,
     description: article.excerpt,
 
     alternates: {

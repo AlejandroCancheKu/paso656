@@ -1,10 +1,5 @@
-import Header from "@/app/components/Header";
-
 export default function ContactoPage() {
   return (
-    <>
-      <Header />
-
       <main className="static-page">
         <header className="static-page-header">
           <span>CONTACTO</span>
@@ -49,6 +44,5 @@ export default function ContactoPage() {
           </div>
         </section>
       </main>
-    </>
   );
 }

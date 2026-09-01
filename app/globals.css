@@ -25,6 +25,132 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
+/* CSS INFO-BAR -------------------------------------------*/
+
+.info-bar {
+  width: 100%;
+  background: #111111;
+  color: #f5f3ee;
+}
+
+.info-bar-inner {
+  max-width: 1400px;
+  min-height: 34px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+  text-transform: uppercase;
+}
+
+.info-date,
+.info-data {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.info-date {
+  flex: 1;
+}
+
+.info-date-full {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-date-mobile {
+  display: none;
+}
+
+.info-time {
+  color: #aaa6a0;
+}
+
+.info-location {
+  flex-shrink: 0;
+  color: #b6533a;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.info-data {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.info-item {
+  white-space: nowrap;
+}
+
+.info-icon {
+  margin-right: 5px;
+  font-size: 11px;
+}
+
+
+/* RESPONSIVE INFO-BAR */
+
+@media (max-width: 768px) {
+  .info-bar-inner {
+    min-height: 32px;
+    padding: 0 24px;
+    gap: 12px;
+    font-size: 9px;
+    letter-spacing: 0.7px;
+  }
+
+  .info-date {
+    flex: 1;
+  }
+
+  .info-date-full {
+    display: none;
+  }
+
+  .info-date-mobile {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .info-time {
+    display: none;
+  }
+
+  .info-location {
+    display: none;
+  }
+
+  .info-data {
+    flex: 0 0 auto;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .info-bar-inner {
+    padding: 0 18px;
+    gap: 8px;
+    font-size: 8px;
+  }
+
+  .info-data {
+    gap: 8px;
+  }
+
+  .info-icon {
+    margin-right: 3px;
+  }
+}
+
+
 /* CSS HEADER ----------------------------------------------*/
 
 .site-header {

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Header from "@/app/components/Header";
 import ShareButtons from "@/app/components/ShareButtons";
 import RelatedArticles from "@/app/components/RelatedArticles";
 import ArticleSchema from "@/app/components/ArticleSchema";
@@ -89,9 +88,6 @@ export default async function ArticlePage({
   const readingTime = getReadingTime(article.content);
 
   return (
-    <>
-      <Header />
-
       <main className="article-page">
 
         <ArticleSchema article={article} />
@@ -135,6 +131,5 @@ export default async function ArticlePage({
 
         <RelatedArticles articles={relatedArticles} />
       </main>
-    </>
   );
 }

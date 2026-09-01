@@ -169,8 +169,15 @@ body {
 }
 
 .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.logo-name {
+  display: block;
   color: #111111;
-  text-decoration: none;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 36px;
   font-weight: 400;
@@ -178,9 +185,19 @@ body {
   line-height: 1;
 }
 
-.logo strong {
+.logo-name strong {
   color: #b6533a;
   font-weight: 700;
+}
+
+.logo-tagline {
+  color: #77736d;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  line-height: 1;
+  text-transform: uppercase;
 }
 
 .main-nav {
@@ -225,6 +242,16 @@ body {
 }
 
 @media (max-width: 768px) {
+
+  .logo-name {
+    font-size: 32px;
+  }
+
+  .logo-tagline {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
   .header-inner {
     padding: 20px 24px;
     position: relative;
@@ -1669,4 +1696,372 @@ body {
   .opinion-card-content h3 {
     font-size: 30px;
   }
+}
+
+/* CSS NOSOTROS ------------------------------------------*/
+
+.about-page {
+  width: 100%;
+}
+
+
+/* HERO */
+
+.about-hero {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 40px 120px;
+}
+
+.about-label {
+  display: inline-block;
+  margin-bottom: 48px;
+  color: #b6533a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.about-hero-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 80px;
+  align-items: end;
+}
+
+.about-brand {
+  margin: 0 0 28px;
+  color: #77736d;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.about-hero h1 {
+  margin: 0;
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(64px, 8vw, 112px);
+  font-weight: 400;
+  line-height: 0.88;
+  letter-spacing: -5px;
+  text-transform: capitalize;
+}
+
+.about-intro {
+  max-width: 360px;
+  margin: 0 0 10px;
+  color: #6b6862;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+
+/* SECCIONES */
+
+.about-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 90px 40px;
+  border-top: 1px solid #d8d5cf;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 80px;
+}
+
+.about-section-label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #77736d;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.about-section-label span:first-child {
+  color: #b6533a;
+  font-size: 10px;
+}
+
+
+/* INTRODUCCIÓN */
+
+.about-section-content {
+  max-width: 720px;
+}
+
+.about-section-content p {
+  margin: 0 0 28px;
+  color: #6b6862;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-section-content p:last-child {
+  margin-bottom: 0;
+}
+
+.about-section-content .about-lead {
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.about-section-content strong {
+  color: #111111;
+  font-weight: 600;
+}
+
+
+/* NUESTRA MIRADA */
+
+.about-topics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.about-topic {
+  min-width: 0;
+  padding-top: 20px;
+  border-top: 2px solid #111111;
+}
+
+.about-topic > span {
+  display: block;
+  margin-bottom: 34px;
+  color: #b6533a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.about-topic h2 {
+  margin: 0 0 18px;
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -1.5px;
+}
+
+.about-topic p {
+  margin: 0;
+  color: #6b6862;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* DESDE LA FRONTERA */
+
+.about-border-content {
+  max-width: 720px;
+}
+
+.about-border-content p {
+  margin: 0 0 28px;
+  color: #6b6862;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.about-border-content p:last-child {
+  margin-bottom: 0;
+}
+
+.about-border-lead {
+  color: #111111 !important;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 42px !important;
+  line-height: 1.15 !important;
+}
+
+
+/* CIERRE */
+
+.about-closing {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 100px 40px 140px;
+}
+
+.about-closing-line {
+  width: 100%;
+  height: 1px;
+  margin-bottom: 70px;
+  background: #111111;
+}
+
+.about-closing h2 {
+  max-width: 900px;
+  margin: 0;
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(48px, 7vw, 92px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -4px;
+}
+
+.about-signature {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 80px;
+  padding-top: 20px;
+  border-top: 1px solid #d8d5cf;
+}
+
+.about-signature strong {
+  color: #111111;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -1.5px;
+}
+
+.about-signature span {
+  color: #77736d;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .about-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-intro {
+    max-width: 500px;
+  }
+
+  .about-section {
+    grid-template-columns: 180px 1fr;
+    gap: 50px;
+  }
+
+  .about-topics {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  .about-hero {
+    padding: 64px 24px 80px;
+  }
+
+  .about-label {
+    margin-bottom: 38px;
+  }
+
+  .about-hero-grid {
+    gap: 40px;
+  }
+
+  .about-brand {
+    margin-bottom: 22px;
+    font-size: 11px;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(56px, 15vw, 78px);
+    letter-spacing: -3px;
+  }
+
+  .about-intro {
+    margin: 0;
+    font-size: 21px;
+  }
+
+
+  .about-section {
+    padding: 64px 24px;
+    display: block;
+  }
+
+  .about-section-label {
+    margin-bottom: 42px;
+  }
+
+
+  .about-section-content .about-lead {
+    font-size: 27px;
+  }
+
+  .about-section-content p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+
+  .about-topics {
+    gap: 42px;
+  }
+
+  .about-topic {
+    padding-top: 18px;
+  }
+
+  .about-topic > span {
+    margin-bottom: 24px;
+  }
+
+  .about-topic h2 {
+    font-size: 34px;
+  }
+
+
+  .about-border-content p {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .about-border-lead {
+    font-size: 34px !important;
+  }
+
+
+  .about-closing {
+    padding: 72px 24px 90px;
+  }
+
+  .about-closing-line {
+    margin-bottom: 48px;
+  }
+
+  .about-closing h2 {
+    font-size: clamp(44px, 12vw, 64px);
+    letter-spacing: -2.5px;
+  }
+
+  .about-signature {
+    margin-top: 60px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .about-signature strong {
+    font-size: 27px;
+  }
+
 }

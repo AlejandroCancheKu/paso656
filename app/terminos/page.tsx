@@ -1,10 +1,5 @@
-import Header from "@/app/components/Header";
-
 export default function TerminosPage() {
   return (
-    <>
-      <Header />
-
       <main className="legal-page">
         <header className="legal-page-header">
           <span>INFORMACIÓN LEGAL</span>
@@ -103,6 +98,5 @@ export default function TerminosPage() {
           </section>
         </article>
       </main>
-    </>
   );
 }

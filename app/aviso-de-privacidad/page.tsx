@@ -1,10 +1,5 @@
-import Header from "@/app/components/Header";
-
 export default function AvisoPrivacidadPage() {
   return (
-    <>
-      <Header />
-
       <main className="legal-page">
         <header className="legal-page-header">
           <span>INFORMACIÓN LEGAL</span>
@@ -93,6 +88,5 @@ export default function AvisoPrivacidadPage() {
           </section>
         </article>
       </main>
-    </>
   );
 }

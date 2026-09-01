@@ -13,14 +13,21 @@ export default function Header() {
 
       <header className="site-header">
         <div className="header-inner">
-          <Link
-            href="/"
-            className="logo"
-            onClick={() => setMenuOpen(false)}
-          >
+
+        <Link
+          href="/"
+          className="logo"
+          onClick={() => setMenuOpen(false)}
+        >
+          <span className="logo-name">
             <span>paso</span>
             <strong>656</strong>
-          </Link>
+          </span>
+
+          <span className="logo-tagline">
+            Periodismo desde la frontera
+          </span>
+        </Link>
 
           <button
             className="menu-toggle"
@@ -65,6 +72,13 @@ export default function Header() {
               onClick={() => setMenuOpen(false)}
             >
               Política
+            </Link>
+
+            <Link
+              href="/nosotros"
+              onClick={() => setMenuOpen(false)}
+            >
+              Nosotros
             </Link>
 
             <Link

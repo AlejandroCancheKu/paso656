@@ -12,13 +12,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
@@ -2036,4 +2029,489 @@ body {
     font-size: 27px;
   }
 
+}
+
+/* CSS FRONTIER INFO -------------------------------------*
+
+/* INFORMACIÓN FRONTERIZA -------------------------------- */
+
+.frontier-info {
+  width: 100%;
+ 
+  padding: 18px 0;
+}
+
+.frontier-info-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.frontier-info-header {
+  margin-bottom: 10px;
+}
+
+.frontier-info-header span {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #77736d;
+}
+
+.frontier-info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.frontier-info-item {
+  min-height: 82px;
+  padding: 15px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background: #f8f7f4;
+  border: 1px solid #e2ded7;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.frontier-info-item:hover {
+  border-color: #c9c3bb;
+  transform: translateY(-1px);
+}
+
+.frontier-info-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
+  color: #b6533a;
+  margin-bottom: 5px;
+}
+
+.frontier-info-value {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 20px;
+  line-height: 1.1;
+  color: #111111;
+}
+
+.frontier-info-detail {
+  margin-top: 5px;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #77736d;
+  line-height: 1.3;
+}
+
+
+/* RESPONSIVE INFORMACIÓN FRONTERIZA */
+
+@media (max-width: 768px) {
+
+  .frontier-info {
+    padding: 14px 0;
+  }
+
+  .frontier-info-inner {
+    padding: 0 24px;
+  }
+
+  .frontier-info-header {
+    margin-bottom: 8px;
+  }
+
+  .frontier-info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .frontier-info-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .frontier-info-item {
+    min-height: 76px;
+    padding: 13px 16px;
+  }
+
+  .frontier-info-value {
+    font-size: 17px;
+  }
+}
+
+.frontier-info-link {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.frontier-info-link:hover {
+  color: #b6533a;
+}
+
+
+@media (max-width: 420px) {
+
+  .frontier-info {
+    padding: 12px 0;
+  }
+
+  .frontier-info-inner {
+    padding: 0 18px;
+  }
+
+  .frontier-info-header span {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+
+  .frontier-info-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .frontier-info-item {
+    min-height: 72px;
+    padding: 12px 10px;
+  }
+
+  .frontier-info-label {
+    font-size: 8px;
+  }
+
+  .frontier-info-value {
+    font-size: 16px;
+  }
+
+  .frontier-info-detail {
+    font-size: 8px;
+  }
+}
+
+
+/* CSS PUENTES --------------------------------------*/
+/* PÁGINA DE PUENTES -------------------------------------- */
+
+.bridges-page {
+  width: 100%;
+  padding: 64px 0 90px;
+}
+
+.bridges-page-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ENCABEZADO */
+
+.bridges-header {
+  max-width: 760px;
+  margin-bottom: 48px;
+}
+
+.bridges-kicker {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #b6533a;
+}
+
+.bridges-header h1 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 400;
+  color: #111111;
+}
+
+.bridges-header p {
+  margin: 16px 0 0;
+
+  max-width: 620px;
+
+  font-size: 14px;
+  line-height: 1.6;
+  color: #77736d;
+}
+
+
+/* TABLERO ----------------------------------------------- */
+
+.bridges-board {
+  width: 100%;
+  border-top: 1px solid #111111;
+}
+
+.bridges-board-head {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+
+  padding: 11px 0;
+
+  border-bottom: 1px solid #d9d5ce;
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: #77736d;
+}
+
+.bridges-board-head span:last-child {
+  text-align: right;
+}
+
+
+/* FILAS -------------------------------------------------- */
+
+.bridge-row {
+  display: grid;
+  grid-template-columns: 42px 1fr 180px;
+  align-items: center;
+
+  min-height: 118px;
+
+  border-bottom: 1px solid #d9d5ce;
+
+  transition:
+    padding 0.2s ease,
+    background 0.2s ease;
+}
+
+.bridge-row:hover {
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #f3f1ed;
+}
+
+.bridge-row-number {
+  align-self: start;
+  padding-top: 25px;
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #b6533a;
+}
+
+.bridge-row-info h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 29px;
+  line-height: 1.15;
+  font-weight: 400;
+  color: #111111;
+}
+
+.bridge-row-info span {
+  display: block;
+  margin-top: 8px;
+
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  color: #77736d;
+}
+
+.bridge-row-time {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.bridge-row-time strong {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 400;
+  color: #111111;
+}
+
+.bridge-row-time span {
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: #77736d;
+}
+
+
+/* PIE ---------------------------------------------------- */
+
+.bridges-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding-top: 18px;
+}
+
+.bridges-cameras-link {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  color: #b6533a;
+  text-decoration: none;
+}
+
+.bridges-cameras-link:hover {
+  text-decoration: underline;
+}
+
+.bridges-footer span {
+  font-size: 9px;
+  color: #77736d;
+}
+
+
+/* RESPONSIVE -------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .bridges-page {
+    padding: 44px 0 65px;
+  }
+
+  .bridges-page-inner {
+    padding: 0 24px;
+  }
+
+  .bridges-header {
+    margin-bottom: 34px;
+  }
+
+  .bridges-header h1 {
+    font-size: 40px;
+  }
+
+  .bridges-header p {
+    font-size: 13px;
+  }
+
+  .bridges-board-head {
+    grid-template-columns: 1fr 130px;
+  }
+
+  .bridge-row {
+    grid-template-columns: 30px 1fr 130px;
+    min-height: 100px;
+  }
+
+  .bridge-row-number {
+    padding-top: 22px;
+    font-size: 8px;
+  }
+
+  .bridge-row-info h2 {
+    font-size: 23px;
+  }
+
+  .bridge-row-info span {
+    font-size: 8px;
+  }
+
+  .bridge-row-time strong {
+    font-size: 38px;
+  }
+
+  .bridge-row-time span {
+    font-size: 9px;
+  }
+
+  .bridges-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 9px;
+  }
+}
+
+
+/* MOBILE PEQUEÑO ---------------------------------------- */
+
+@media (max-width: 420px) {
+
+  .bridges-page {
+    padding: 34px 0 52px;
+  }
+
+  .bridges-page-inner {
+    padding: 0 18px;
+  }
+
+  .bridges-header {
+    margin-bottom: 28px;
+  }
+
+  .bridges-kicker {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+  }
+
+  .bridges-header h1 {
+    font-size: 34px;
+  }
+
+  .bridges-header p {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
+  .bridges-board-head {
+    grid-template-columns: 1fr 95px;
+
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .bridge-row {
+    grid-template-columns: 24px 1fr 95px;
+    min-height: 92px;
+  }
+
+  .bridge-row-number {
+    padding-top: 20px;
+  }
+
+  .bridge-row-info h2 {
+    font-size: 19px;
+  }
+
+  .bridge-row-info span {
+    margin-top: 6px;
+    font-size: 7px;
+    line-height: 1.3;
+  }
+
+  .bridge-row-time {
+    gap: 4px;
+  }
+
+  .bridge-row-time strong {
+    font-size: 31px;
+  }
+
+  .bridge-row-time span {
+    font-size: 8px;
+  }
+
+  .bridges-footer {
+    padding-top: 15px;
+  }
+
+  .bridges-cameras-link {
+    font-size: 9px;
+  }
+
+  .bridges-footer span {
+    font-size: 8px;
+    line-height: 1.4;
+  }
 }

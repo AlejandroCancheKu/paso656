@@ -48,15 +48,11 @@ body {
   text-transform: uppercase;
 }
 
-.info-date,
-.info-data {
+.info-date {
   display: flex;
   align-items: center;
   gap: 12px;
   min-width: 0;
-}
-
-.info-date {
   flex: 1;
 }
 
@@ -81,24 +77,11 @@ body {
   letter-spacing: 1.2px;
 }
 
-.info-data {
-  flex: 1;
-  justify-content: flex-end;
-}
-
-.info-item {
-  white-space: nowrap;
-}
-
-.info-icon {
-  margin-right: 5px;
-  font-size: 11px;
-}
-
 
 /* RESPONSIVE INFO-BAR */
 
 @media (max-width: 768px) {
+
   .info-bar-inner {
     min-height: 32px;
     padding: 0 24px;
@@ -125,31 +108,20 @@ body {
   }
 
   .info-location {
-    display: none;
-  }
-
-  .info-data {
-    flex: 0 0 auto;
-    gap: 10px;
+    display: block;
+    flex-shrink: 0;
   }
 }
 
 @media (max-width: 420px) {
+
   .info-bar-inner {
     padding: 0 18px;
     gap: 8px;
     font-size: 8px;
   }
 
-  .info-data {
-    gap: 8px;
-  }
-
-  .info-icon {
-    margin-right: 3px;
-  }
 }
-
 
 /* CSS HEADER ----------------------------------------------*/
 

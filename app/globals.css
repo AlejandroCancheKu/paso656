@@ -24,6 +24,9 @@ body {
   width: 100%;
   background: #111111;
   color: #f5f3ee;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
 }
 
 .info-bar-inner {
@@ -122,6 +125,9 @@ body {
   width: 100%;
   background: #f5f3ee;
   border-bottom: 1px solid #d8d5cf;
+  position: sticky;
+  top: 34px;
+  z-index: 1000;
 }
 
 .header-inner {
@@ -226,6 +232,10 @@ body {
   .menu-toggle {
     display: block;
     margin-left: auto;
+  }
+
+  .site-header {
+    top: 32px;
   }
 
   .main-nav {

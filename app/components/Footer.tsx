@@ -21,9 +21,9 @@ export default function Footer() {
           <span>NAVEGACIÓN</span>
 
           <Link href="/">Inicio</Link>
-          <Link href="/articulos/opinion">Opinión</Link>
-          <Link href="/articulos/ciudad">Ciudad</Link>
-          <Link href="/articulos/politica">Política</Link>
+          <Link href="/articulos">Articulos</Link>
+          <Link href="/noticias">Noticias</Link>
+          <Link href="/nosotros">Nosotros</Link>
           <Link href="/contacto">Contacto</Link>
         </nav>
 

@@ -24,12 +24,23 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Opinión, ciudad y política desde Ciudad Juárez.",
+    "Noticias, información y análisis desde Ciudad Juárez, Chihuahua.",
 
   openGraph: {
     siteName: "paso656",
     locale: "es_MX",
     type: "website",
+    title: "paso656 — Ciudad Juárez",
+    description:
+      "Noticias, información y análisis desde Ciudad Juárez, Chihuahua.",
+    url: "https://paso656.com",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "paso656 — Ciudad Juárez",
+    description:
+      "Noticias, información y análisis desde Ciudad Juárez, Chihuahua.",
   },
 };
 

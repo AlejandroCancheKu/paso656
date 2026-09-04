@@ -21,30 +21,39 @@ export default function RelatedArticles({
       </div>
 
       <div className="related-grid">
-        {articles.map((article) => (
-          <Link
-            key={article.id}
-            href={`/articulos/${article.slug}`}
-            className="related-card"
-          >
-            <div className="related-image">
-              <Image
-                src={article.image}
-                alt={article.title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </div>
+        {articles.map((article) => {
+          const basePath =
+            article.section === "Noticias"
+              ? "/noticias"
+              : "/articulos";
 
-            <div className="related-info">
-              <span>{article.category.toUpperCase()}</span>
+          const articleUrl = `${basePath}/${article.slug}`;
 
-              <h3>{article.title}</h3>
+          return (
+            <Link
+              key={article.id}
+              href={articleUrl}
+              className="related-card"
+            >
+              <div className="related-image">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
 
-              <p>{article.excerpt}</p>
-            </div>
-          </Link>
-        ))}
+              <div className="related-info">
+                <span>{article.category.toUpperCase()}</span>
+
+                <h3>{article.title}</h3>
+
+                <p>{article.excerpt}</p>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </section>
   );

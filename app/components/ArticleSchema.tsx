@@ -7,25 +7,42 @@ type ArticleSchemaProps = {
 export default function ArticleSchema({
   article,
 }: ArticleSchemaProps) {
+  const isNews = article.section === "Noticias";
+
+  const basePath = isNews
+    ? "/noticias"
+    : "/articulos";
+
+  const articleUrl = `https://paso656.com${basePath}/${article.slug}`;
+
   const schema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": isNews ? "NewsArticle" : "Article",
+
     headline: article.title,
+
     description: article.excerpt,
+
     image: [article.image],
+
     datePublished: article.dateRaw,
+
+    dateModified: article.dateRaw,
+
     author: {
       "@type": "Person",
       name: article.author,
     },
+
     publisher: {
       "@type": "Organization",
       name: "paso656",
       url: "https://paso656.com",
     },
+
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://paso656.com/articulos/${article.slug}`,
+      "@id": articleUrl,
     },
   };
 

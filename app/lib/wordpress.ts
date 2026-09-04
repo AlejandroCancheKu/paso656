@@ -11,11 +11,49 @@ export type Article = {
   excerpt: string;
   content: string;
   category: string;
+  section: string;
   author: string;
   date: string;
   dateRaw: string;
   image: string;
 };
+
+function mapPost(post: any): Article {
+  const terms = post._embedded?.["wp:term"]?.[0] ?? [];
+
+  const category = terms[0]?.name ?? "";
+
+  const newsCategories = ["Local", "Estatal", "Nacional"];
+
+  const newsCategory = terms.find((term: any) =>
+    newsCategories.includes(term.name)
+  );
+
+  return {
+    id: post.id,
+    slug: post.slug,
+    title: post.title.rendered,
+    excerpt: post.excerpt.rendered
+      .replace(/<[^>]*>/g, "")
+      .replace(/&hellip;/g, "...")
+      .trim(),
+    content: post.content.rendered,
+    category,
+    section: newsCategory ? "Noticias" : category,
+    author: post._embedded?.author?.[0]?.name ?? "",
+    date: new Date(post.date)
+      .toLocaleDateString("es-MX", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+      .toUpperCase(),
+    dateRaw: post.date,
+    image:
+      post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
+      "/images/article-city.png",
+  };
+}
 
 export async function getPosts(perPage: number = 100): Promise<Article[]> {
   const response = await fetch(
@@ -33,31 +71,26 @@ export async function getPosts(perPage: number = 100): Promise<Article[]> {
 
   const posts = await response.json();
 
-  return posts.map((post: any) => ({
-    id: post.id,
-    slug: post.slug,
-    title: post.title.rendered,
-    excerpt: post.excerpt.rendered
-      .replace(/<[^>]*>/g, "")
-      .replace(/&hellip;/g, "...")
-      .trim(),
-    content: post.content.rendered,
-    category:
-      post._embedded?.["wp:term"]?.[0]?.[0]?.name ?? "",
-    author:
-      post._embedded?.author?.[0]?.name ?? "",
-    date: new Date(post.date)
-      .toLocaleDateString("es-MX", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-      .toUpperCase(),
-    dateRaw: post.date,
-    image:
-      post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
-      "/images/article-city.png",
-  }));
+  return posts.map(mapPost);
+}
+
+export async function getArticles(perPage: number = 100): Promise<Article[]> {
+  const response = await fetch(
+    `${WORDPRESS_API_URL}/posts?categories=3&_embed&per_page=${perPage}`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("No se pudieron obtener las publicaciones");
+  }
+
+  const posts = await response.json();
+
+  return posts.map(mapPost);
 }
 
 export async function searchPosts(query: string): Promise<Article[]> {
@@ -76,31 +109,7 @@ export async function searchPosts(query: string): Promise<Article[]> {
 
   const posts = await response.json();
 
-  return posts.map((post: any) => ({
-    id: post.id,
-    slug: post.slug,
-    title: post.title.rendered,
-    excerpt: post.excerpt.rendered
-      .replace(/<[^>]*>/g, "")
-      .replace(/&hellip;/g, "...")
-      .trim(),
-    content: post.content.rendered,
-    category:
-      post._embedded?.["wp:term"]?.[0]?.[0]?.name ?? "",
-    author:
-      post._embedded?.author?.[0]?.name ?? "",
-    date: new Date(post.date)
-      .toLocaleDateString("es-MX", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-      .toUpperCase(),
-    dateRaw: post.date,
-    image:
-      post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
-      "/images/article-city.png",
-  }));
+  return posts.map(mapPost);
 }
 
 export function getReadingTime(content: string): number {

@@ -1,15 +1,26 @@
 import ArticleCard from "./ArticleCard";
-import { getPosts } from "@/app/lib/wordpress";
+import { getArticles } from "@/app/lib/wordpress";
 
 export default async function LatestArticles() {
-  const articles = await getPosts();
-  const latestArticles = articles.slice(1, 4);
+  const articles = await getArticles();
+
+  const sortedArticles = articles
+    .sort(
+      (a, b) =>
+        new Date(b.dateRaw).getTime() -
+        new Date(a.dateRaw).getTime()
+    )
+    .slice(1, 4);
+
+  if (sortedArticles.length === 0) {
+    return null;
+  }
 
   return (
     <section className="latest-articles">
       <div className="latest-header">
         <div>
-          <span>ACTUALIDAD</span>
+          <span>ARTICULOS</span>
           <h2>Últimas publicaciones</h2>
         </div>
 
@@ -17,10 +28,11 @@ export default async function LatestArticles() {
       </div>
 
       <div className="articles-grid">
-        {latestArticles.map((article) => (
+        {sortedArticles.map((article) => (
           <ArticleCard
             key={article.id}
             slug={article.slug}
+            section={article.section}
             category={article.category.toUpperCase()}
             title={article.title}
             excerpt={article.excerpt}

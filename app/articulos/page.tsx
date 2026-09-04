@@ -1,33 +1,24 @@
+import type { Metadata } from "next";
 import ArticleCard from "@/app/components/ArticleCard";
-import ArticleFilters from "@/app/components/ArticleFilters";
-import { getPosts } from "@/app/lib/wordpress";
+import { getArticles } from "@/app/lib/wordpress";
 
-type ArticlesPageProps = {
-  searchParams: Promise<{
-    categoria?: string;
-  }>;
+export const metadata: Metadata = {
+  title: "Artículos",
+  description:
+    "Artículos y análisis desde Ciudad Juárez, Chihuahua. Ideas, contexto y perspectiva desde la frontera.",
+  alternates: {
+    canonical: "https://paso656.com/articulos",
+  },
 };
 
-export default async function ArticlesPage({
-  searchParams,
-}: ArticlesPageProps) {
-  const { categoria } = await searchParams;
+export default async function ArticlesPage() {
+  const articles = await getArticles();
 
-  const articles = await getPosts();
-
-  const normalizeCategory = (value: string) =>
-    value
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "");
-
-  const filteredArticles = categoria
-    ? articles.filter(
-        (article) =>
-          normalizeCategory(article.category) ===
-          normalizeCategory(categoria)
-      )
-    : articles;
+  const sortedArticles = articles.sort(
+    (a, b) =>
+      new Date(b.dateRaw).getTime() -
+      new Date(a.dateRaw).getTime()
+  );
 
   return (
     <main className="latest-articles">
@@ -38,13 +29,12 @@ export default async function ArticlesPage({
         </div>
       </div>
 
-      <ArticleFilters />
-
       <div className="articles-grid">
-        {filteredArticles.map((article) => (
+        {sortedArticles.map((article) => (
           <ArticleCard
             key={article.id}
             slug={article.slug}
+            section={article.section}
             category={article.category.toUpperCase()}
             title={article.title}
             excerpt={article.excerpt}
@@ -55,9 +45,9 @@ export default async function ArticlesPage({
         ))}
       </div>
 
-      {filteredArticles.length === 0 && (
+      {sortedArticles.length === 0 && (
         <p className="no-articles">
-          No hay publicaciones en esta categoría.
+          No hay publicaciones disponibles.
         </p>
       )}
     </main>

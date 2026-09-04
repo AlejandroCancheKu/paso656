@@ -1,7 +1,12 @@
-export const metadata = {
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
   title: "Nosotros",
   description:
-    "Conoce paso656, un medio digital enfocado en Ciudad Juárez y su entorno.",
+    "Conoce paso656, un medio digital de Ciudad Juárez enfocado en información, noticias y análisis desde la frontera.",
+  alternates: {
+    canonical: "https://paso656.com/nosotros",
+  },
 };
 
 export default function NosotrosPage() {
@@ -74,13 +79,12 @@ export default function NosotrosPage() {
           <article className="about-topic">
             <span>01</span>
 
-            <h2>Ciudad</h2>
+            <h2>Cercanía</h2>
 
             <p>
-              Observamos lo que sucede en nuestras calles,
-              colonias y espacios públicos. Las historias que
-              forman parte de la vida cotidiana de quienes
-              habitan esta ciudad.
+              Estamos cerca de lo que ocurre. De las calles,
+              de las personas y de las historias que forman
+              parte de la vida cotidiana de nuestra ciudad.
             </p>
           </article>
 
@@ -88,13 +92,12 @@ export default function NosotrosPage() {
           <article className="about-topic">
             <span>02</span>
 
-            <h2>Opinión</h2>
+            <h2>Contexto</h2>
 
             <p>
-              Creemos en el valor de las ideas y en la
-              conversación. Un espacio para distintas voces,
-              perspectivas y formas de entender nuestra
-              realidad.
+              Informar no es solamente contar qué pasó.
+              También es ayudar a entender por qué importa
+              y cómo puede impactar a quienes vivimos aquí.
             </p>
           </article>
 
@@ -102,13 +105,12 @@ export default function NosotrosPage() {
           <article className="about-topic">
             <span>03</span>
 
-            <h2>Política</h2>
+            <h2>Perspectiva</h2>
 
             <p>
-              Seguimos las decisiones y acontecimientos que
-              tienen impacto en Ciudad Juárez. Porque entender
-              lo que ocurre también significa entender quién
-              decide y por qué.
+              Creemos en un periodismo con voz propia, abierto
+              a distintas ideas y dispuesto a poner sobre la mesa
+              los temas que merecen nuestra atención.
             </p>
           </article>
 
@@ -139,9 +141,9 @@ export default function NosotrosPage() {
           </p>
 
           <p>
-            Con una mirada local, una voz propia y la intención
-            de poner sobre la mesa aquello que merece nuestra
-            atención.
+            Con una mirada local, una voz propia y el compromiso
+            de mantenernos cerca de aquello que sucede a nuestro alrededor.
+            Porque conocer nuestra ciudad también es una forma de entenderla.
           </p>
         </div>
       </section>

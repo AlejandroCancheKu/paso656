@@ -3,47 +3,52 @@ import ShareButtons from "@/app/components/ShareButtons";
 import RelatedArticles from "@/app/components/RelatedArticles";
 import ArticleSchema from "@/app/components/ArticleSchema";
 import {
-  getArticles,
+  getPosts,
   getReadingTime,
 } from "@/app/lib/wordpress";
 
-type ArticlePageProps = {
+type NewsPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
 
-async function getArticle(slug: string) {
-  const articles = await getArticles();
+async function getNewsArticle(slug: string) {
+  const articles = await getPosts();
 
-  return articles.find((item) => item.slug === slug);
+  return articles.find(
+    (article) =>
+      article.slug === slug &&
+      article.section === "Noticias"
+  );
 }
 
 export async function generateMetadata({
   params,
-}: ArticlePageProps): Promise<Metadata> {
+}: NewsPageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const article = await getArticle(slug);
+  const article = await getNewsArticle(slug);
 
   if (!article) {
     return {
-      title: "Artículo no encontrado",
+      title: "Noticia no encontrada",
     };
   }
+
   return {
     title: article.title,
     description: article.excerpt,
 
     alternates: {
-      canonical: `https://paso656.com/articulos/${article.slug}`,
+      canonical: `https://paso656.com/noticias/${article.slug}`,
     },
 
     openGraph: {
       title: article.title,
       description: article.excerpt,
       type: "article",
-      url: `https://paso656.com/articulos/${article.slug}`,
+      url: `https://paso656.com/noticias/${article.slug}`,
       siteName: "paso656",
       locale: "es_MX",
       images: [
@@ -63,21 +68,25 @@ export async function generateMetadata({
   };
 }
 
-export default async function ArticlePage({
+export default async function NewsPage({
   params,
-}: ArticlePageProps) {
+}: NewsPageProps) {
   const { slug } = await params;
 
-  const article = await getArticle(slug);
+  const article = await getNewsArticle(slug);
 
   if (!article) {
-    return <h1>Artículo no encontrado</h1>;
+    return <h1>Noticia no encontrada</h1>;
   }
 
-  const allArticles = await getArticles();
+  const allNews = await getPosts();
 
-  const relatedArticles = allArticles
-    .filter((item) => item.id !== article.id)
+  const relatedArticles = allNews
+    .filter(
+      (item) =>
+        item.id !== article.id &&
+        item.section === "Noticias"
+    )
     .slice(0, 2);
 
   const readingTime = getReadingTime(article.content);
@@ -105,7 +114,7 @@ export default async function ArticlePage({
 
         <ShareButtons
           title={article.title}
-          url={`https://paso656.com/articulos/${article.slug}`}
+          url={`https://paso656.com/noticias/${article.slug}`}
         />
       </header>
 

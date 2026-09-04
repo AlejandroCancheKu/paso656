@@ -4,7 +4,7 @@ import { getPosts } from "@/app/lib/wordpress";
 export const revalidate = 60;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = await getPosts();
+  const posts = await getPosts();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -14,13 +14,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: "https://paso656.com/articulos",
     },
     {
-      url: "https://paso656.com/articulos/opinion",
+      url: "https://paso656.com/noticias",
     },
     {
-      url: "https://paso656.com/articulos/ciudad",
+      url: "https://paso656.com/noticias/local",
     },
     {
-      url: "https://paso656.com/articulos/politica",
+      url: "https://paso656.com/noticias/estatal",
+    },
+    {
+      url: "https://paso656.com/noticias/nacional",
+    },
+    {
+      url: "https://paso656.com/nosotros",
     },
     {
       url: "https://paso656.com/contacto",
@@ -33,12 +39,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const articlePages: MetadataRoute.Sitemap = articles.map(
-    (article) => ({
-      url: `https://paso656.com/articulos/${article.slug}`,
-      lastModified: new Date(article.dateRaw),
-    })
-  );
+  const postPages: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `https://paso656.com${
+      post.section === "Noticias"
+        ? "/noticias"
+        : "/articulos"
+    }/${post.slug}`,
+    lastModified: new Date(post.dateRaw),
+  }));
 
-  return [...staticPages, ...articlePages];
+  return [...staticPages, ...postPages];
 }

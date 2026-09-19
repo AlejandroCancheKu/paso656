@@ -18,6 +18,12 @@ export type Article = {
   image: string;
 };
 
+export type Banner = {
+  id: number;
+  title: string;
+  image: string;
+};
+
 function mapPost(post: any): Article {
   const terms = post._embedded?.["wp:term"]?.[0] ?? [];
 
@@ -110,6 +116,35 @@ export async function searchPosts(query: string): Promise<Article[]> {
   const posts = await response.json();
 
   return posts.map(mapPost);
+}
+
+export async function getBanners(): Promise<Banner[]> {
+  const response = await fetch(
+    `${WORDPRESS_API_URL}/paso656_banner?per_page=10&acf_format=standard`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    console.error(
+      "Error al obtener banners:",
+      response.status,
+      response.statusText
+    );
+
+    return [];
+  }
+
+  const banners = await response.json();
+
+  return banners
+    .map((banner: any) => ({
+      id: banner.id,
+      title: banner.title?.rendered ?? "",
+      image: banner.acf?.banner_image ?? "",
+    }))
+    .filter((banner: Banner) => banner.image);
 }
 
 export function getReadingTime(content: string): number {

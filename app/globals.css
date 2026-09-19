@@ -2546,3 +2546,88 @@ body {
     font-size: 8px;
   }
 }
+
+/* =========================
+   BANNERS PUBLICITARIOS
+   ========================= */
+
+.banners-section {
+  width: 100%;
+  padding: 24px 20px;
+}
+
+.banners-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.banners-carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f5f3ee;
+}
+
+.banner-slide {
+  display: none;
+  width: 100%;
+}
+
+.banner-slide.active {
+  display: block;
+}
+
+.banner-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.banner-dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+
+.banner-dots button {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.banner-dots button.active {
+  background: #ffffff;
+}
+
+/* BANNERS — MÓVIL */
+
+@media (max-width: 768px) {
+  .banners-section {
+    padding: 16px 12px;
+  }
+
+  .banners-carousel {
+    border-radius: 6px;
+  }
+
+  .banner-dots {
+    bottom: 8px;
+  }
+
+  .banner-dots button {
+    width: 7px;
+    height: 7px;
+  }
+}

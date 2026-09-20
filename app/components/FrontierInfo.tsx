@@ -134,7 +134,7 @@ export default function FrontierInfo() {
             </div>
 
             <span className="frontier-info-detail">
-              USD / MXN · FIX
+              USD / MXN · FIX Banxico
               {formattedExchangeDate && ` · ${formattedExchangeDate}`}
             </span>
           </div>

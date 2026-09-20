@@ -15,6 +15,7 @@ export type Article = {
   author: string;
   date: string;
   dateRaw: string;
+  modifiedRaw: string;
   image: string;
 };
 
@@ -55,6 +56,7 @@ function mapPost(post: any): Article {
       })
       .toUpperCase(),
     dateRaw: post.date,
+    modifiedRaw: post.modified ?? post.date,
     image:
       post._embedded?.["wp:featuredmedia"]?.[0]?.source_url ??
       "/images/article-city.png",

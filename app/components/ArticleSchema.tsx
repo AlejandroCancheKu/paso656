@@ -27,7 +27,7 @@ export default function ArticleSchema({
 
     datePublished: article.dateRaw,
 
-    dateModified: article.dateRaw,
+    dateModified: article.modifiedRaw,
 
     author: {
       "@type": "Person",

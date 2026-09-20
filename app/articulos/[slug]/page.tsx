@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import ShareButtons from "@/app/components/ShareButtons";
 import RelatedArticles from "@/app/components/RelatedArticles";
 import ArticleSchema from "@/app/components/ArticleSchema";
@@ -27,9 +28,7 @@ export async function generateMetadata({
   const article = await getArticle(slug);
 
   if (!article) {
-    return {
-      title: "Artículo no encontrado",
-    };
+    notFound();
   }
   return {
     title: article.title,

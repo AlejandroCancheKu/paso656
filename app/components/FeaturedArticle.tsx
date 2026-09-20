@@ -21,7 +21,7 @@ export default async function FeaturedArticle() {
     <section className="featured-article">
       <div className="featured-content">
         <span className="featured-category">
-          {article.category.toUpperCase()}
+          ARTICULO DE OPINIÓN DEL DÍA
         </span>
 
         <h1>{article.title}</h1>

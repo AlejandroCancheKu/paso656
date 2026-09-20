@@ -8,8 +8,8 @@ export default function Home() {
     <main>
       <Banners />
       <FeaturedArticle />
-      <LatestArticles />
       <LatestNews />
+      <LatestArticles />
     </main>
   );
 }

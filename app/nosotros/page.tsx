@@ -38,20 +38,19 @@ export default function NosotrosPage() {
 
 
       {/* QUÉ ES PASO656 */}
-      <section className="about-section about-introduction">
+      <section className="about-section about-border">
         <div className="about-section-label">
           <span>01</span>
-          <span>Qué es paso656</span>
+          <span>QUÉ ES PASO656</span>
         </div>
 
-        <div className="about-section-content">
-          <p className="about-lead">
-            Ciudad Juárez es una ciudad marcada por su condición
-            fronteriza, pero que no puede reducirse a ella.
+        <div className="about-border-content">
+          <p className="about-border-lead">
+            <span>Paso</span>
+            <strong>656</strong> nace para mirar de cerca lo que ocurre aquí.
           </p>
 
           <p>
-            paso656 nace para mirar de cerca lo que ocurre aquí.
             Somos un medio digital enfocado en Ciudad Juárez y su
             entorno. Contamos historias, compartimos información y
             abrimos espacios para la opinión sobre los temas que
@@ -59,70 +58,16 @@ export default function NosotrosPage() {
           </p>
 
           <p>
-            No buscamos contar todo.
-            <br />
-            Buscamos contar <strong>lo que importa.</strong>
+            No buscamos contar todo. Buscamos contar <strong>lo que importa.</strong>
           </p>
         </div>
       </section>
 
-
-      {/* NUESTRA MIRADA */}
-      <section className="about-section">
-        <div className="about-section-label">
-          <span>02</span>
-          <span>Nuestra mirada</span>
-        </div>
-
-        <div className="about-topics">
-
-          <article className="about-topic">
-            <span>01</span>
-
-            <h2>Cercanía</h2>
-
-            <p>
-              Estamos cerca de lo que ocurre. De las calles,
-              de las personas y de las historias que forman
-              parte de la vida cotidiana de nuestra ciudad.
-            </p>
-          </article>
-
-
-          <article className="about-topic">
-            <span>02</span>
-
-            <h2>Contexto</h2>
-
-            <p>
-              Informar no es solamente contar qué pasó.
-              También es ayudar a entender por qué importa
-              y cómo puede impactar a quienes vivimos aquí.
-            </p>
-          </article>
-
-
-          <article className="about-topic">
-            <span>03</span>
-
-            <h2>Perspectiva</h2>
-
-            <p>
-              Creemos en un periodismo con voz propia, abierto
-              a distintas ideas y dispuesto a poner sobre la mesa
-              los temas que merecen nuestra atención.
-            </p>
-          </article>
-
-        </div>
-      </section>
-
-
       {/* DESDE LA FRONTERA */}
       <section className="about-section about-border">
         <div className="about-section-label">
-          <span>03</span>
-          <span>Desde la frontera</span>
+          <span>02</span>
+          <span>DESDE LA FRONTERA</span>
         </div>
 
         <div className="about-border-content">
@@ -133,11 +78,7 @@ export default function NosotrosPage() {
           <p>
             Es frontera, pero también es hogar. Es una ciudad
             de contrastes, de movimiento y de transformación
-            constante.
-          </p>
-
-          <p>
-            Por eso queremos contarla desde aquí.
+            constante. Por eso queremos contarla desde aquí.
           </p>
 
           <p>
@@ -148,6 +89,61 @@ export default function NosotrosPage() {
         </div>
       </section>
 
+
+      {/* OBJETIVO GENERAL */}
+      <section className="about-section about-border">
+        <div className="about-section-label">
+          <span>03</span>
+          <span>NUESTRO OBJETIVO</span>
+        </div>
+
+        <div className="about-border-content">
+          <p className="about-border-lead">
+            Objetivo
+          </p>
+
+          <p>
+            Ser un medio de comunicación dedicado a informar de manera 
+            clara, objetiva y oportuna sobre los acontecimientos más 
+            relevantes de Ciudad Juárez, Chihuahua, México y el mundo, 
+            acercando la información a la comunidad a través de 
+            plataformas digitales.
+          </p>
+        </div>
+      </section>
+
+      {/* DESDE LA FRONTERA */}
+      <section className="about-section about-border">
+        <div className="about-section-label">
+          <span>04</span>
+          <span>NUESTRO PROPÓSITO</span>
+        </div>
+
+        <div className="about-border-content">
+          <p className="about-border-lead">
+            Misión
+          </p>
+
+          <p>
+            Informar a la ciudadanía de manera veraz, oportuna y responsable 
+            sobre los acontecimientos más relevantes de Ciudad Juárez, 
+            Chihuahua y la región fronteriza, promoviendo el acceso a 
+            información confiable que contribuya a una sociedad más 
+            informada, participativa y consciente de su entorno.
+          </p>
+
+          <p className="about-border-lead">
+            Visión
+          </p>
+
+          <p>
+            Ser un medio digital de referencia en la frontera norte de 
+            México, reconocido por su credibilidad, compromiso con la 
+            verdad, cercanía con la comunidad e innovación en la difusión 
+            de información de interés público.
+          </p>
+        </div>
+      </section>
 
       {/* CIERRE */}
       <section className="about-closing">

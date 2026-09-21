@@ -30,7 +30,7 @@ function mapPost(post: any): Article {
 
   const category = terms[0]?.name ?? "";
 
-  const newsCategories = ["Local", "Estatal", "Nacional"];
+  const newsCategories = ["Local", "Estatal", "Nacional","Clima"];
 
   const newsCategory = terms.find((term: any) =>
     newsCategories.includes(term.name)

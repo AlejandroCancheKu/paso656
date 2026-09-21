@@ -41,7 +41,7 @@ export default function NosotrosPage() {
       <section className="about-section about-border">
         <div className="about-section-label">
           <span>01</span>
-          <span>QUÉ ES PASO656</span>
+          <span>QUIÉNES SOMOS</span>
         </div>
 
         <div className="about-border-content">
@@ -51,71 +51,33 @@ export default function NosotrosPage() {
           </p>
 
           <p>
-            Somos un medio digital enfocado en Ciudad Juárez y su
-            entorno. Contamos historias, compartimos información y
-            abrimos espacios para la opinión sobre los temas que
-            forman parte de nuestra ciudad.
+            Somos un medio digital enfocado en Ciudad Juárez y su entorno. 
+            Contamos historias, compartimos información y abrimos espacios 
+            para la opinión sobre los temas que forman parte de nuestra ciudad.
+          </p>
+
+          <p>
+            Ciudad Juárez tiene una historia particular. Es frontera, pero 
+            también es hogar; una ciudad de contrastes, de movimiento y de 
+            transformación constante. Por eso queremos contarla desde aquí, 
+            con una mirada local, una voz propia y el compromiso de 
+            mantenernos cerca de aquello que sucede a nuestro alrededor.
           </p>
 
           <p>
             No buscamos contar todo. Buscamos contar <strong>lo que importa.</strong>
           </p>
-        </div>
-      </section>
-
-      {/* DESDE LA FRONTERA */}
-      <section className="about-section about-border">
-        <div className="about-section-label">
-          <span>02</span>
-          <span>DESDE LA FRONTERA</span>
-        </div>
-
-        <div className="about-border-content">
-          <p className="about-border-lead">
-            Ciudad Juárez tiene una historia particular.
-          </p>
 
           <p>
-            Es frontera, pero también es hogar. Es una ciudad
-            de contrastes, de movimiento y de transformación
-            constante. Por eso queremos contarla desde aquí.
-          </p>
-
-          <p>
-            Con una mirada local, una voz propia y el compromiso
-            de mantenernos cerca de aquello que sucede a nuestro alrededor.
             Porque conocer nuestra ciudad también es una forma de entenderla.
           </p>
         </div>
       </section>
 
-
-      {/* OBJETIVO GENERAL */}
+      {/* NUESTRO PROPÓSITO */}
       <section className="about-section about-border">
         <div className="about-section-label">
-          <span>03</span>
-          <span>NUESTRO OBJETIVO</span>
-        </div>
-
-        <div className="about-border-content">
-          <p className="about-border-lead">
-            Objetivo
-          </p>
-
-          <p>
-            Ser un medio de comunicación dedicado a informar de manera 
-            clara, objetiva y oportuna sobre los acontecimientos más 
-            relevantes de Ciudad Juárez, Chihuahua, México y el mundo, 
-            acercando la información a la comunidad a través de 
-            plataformas digitales.
-          </p>
-        </div>
-      </section>
-
-      {/* DESDE LA FRONTERA */}
-      <section className="about-section about-border">
-        <div className="about-section-label">
-          <span>04</span>
+          <span>02</span>
           <span>NUESTRO PROPÓSITO</span>
         </div>
 
@@ -141,6 +103,29 @@ export default function NosotrosPage() {
             México, reconocido por su credibilidad, compromiso con la 
             verdad, cercanía con la comunidad e innovación en la difusión 
             de información de interés público.
+          </p>
+        </div>
+      </section>
+
+      
+      {/* NUESTRO OBJETIVO */}
+      <section className="about-section about-border">
+        <div className="about-section-label">
+          <span>03</span>
+          <span>NUESTRO OBJETIVO</span>
+        </div>
+
+        <div className="about-border-content">
+          <p className="about-border-lead">
+            Objetivo
+          </p>
+
+          <p>
+            Ser un medio de comunicación dedicado a informar de manera 
+            clara, objetiva y oportuna sobre los acontecimientos más 
+            relevantes de Ciudad Juárez, Chihuahua, México y el mundo, 
+            acercando la información a la comunidad a través de 
+            plataformas digitales.
           </p>
         </div>
       </section>

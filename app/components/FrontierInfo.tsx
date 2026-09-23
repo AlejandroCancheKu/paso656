@@ -1,9 +1,24 @@
 "use client";
+
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import {
+  ArrowRight,
+  Cloud,
+  CloudFog,
+  CloudLightning,
+  CloudRain,
+  CloudSnow,
+  CloudSun,
+  DollarSign,
+  MapPin,
+  Route,
+  Sun,
+} from "lucide-react";
 
 type WeatherData = {
   temperature: number;
+  weatherCode: number;
 };
 
 type ExchangeData = {
@@ -17,16 +32,51 @@ type Bridge = {
   direction: string;
 };
 
+function getWeatherIcon(code: number) {
+  if (code === 0) return Sun;
+
+  if (code === 1 || code === 2) return CloudSun;
+
+  if (code === 3) return Cloud;
+
+  if (code === 45 || code === 48) return CloudFog;
+
+  if (
+    (code >= 51 && code <= 67) ||
+    (code >= 80 && code <= 82)
+  ) {
+    return CloudRain;
+  }
+
+  if (
+    (code >= 71 && code <= 77) ||
+    code === 85 ||
+    code === 86
+  ) {
+    return CloudSnow;
+  }
+
+  if (code >= 95) return CloudLightning;
+
+  return CloudSun;
+}
+
 export default function FrontierInfo() {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [exchange, setExchange] = useState<ExchangeData | null>(null);
+  const [weather, setWeather] = useState<WeatherData | null>(
+    null
+  );
+
+  const [exchange, setExchange] = useState<ExchangeData | null>(
+    null
+  );
+
   const [bridge, setBridge] = useState<Bridge | null>(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
       try {
         const response = await fetch(
-          "https://api.open-meteo.com/v1/forecast?latitude=31.7619&longitude=-106.4850&current=temperature_2m&temperature_unit=celsius&timezone=America%2FChihuahua"
+          "https://api.open-meteo.com/v1/forecast?latitude=31.7619&longitude=-106.4850&current=temperature_2m,weather_code&temperature_unit=celsius&timezone=America%2FChihuahua"
         );
 
         if (!response.ok) return;
@@ -34,10 +84,13 @@ export default function FrontierInfo() {
         const data = await response.json();
 
         setWeather({
-          temperature: Math.round(data.current.temperature_2m),
+          temperature: Math.round(
+            data.current.temperature_2m
+          ),
+          weatherCode: data.current.weather_code,
         });
       } catch {
-        // Si el servicio falla, no mostramos el clima.
+        // Si falla el servicio, no mostramos el clima.
       }
     };
 
@@ -56,7 +109,7 @@ export default function FrontierInfo() {
           date: data.date,
         });
       } catch {
-        // Si el servicio falla, no mostramos el tipo de cambio.
+        // Si falla el servicio, no mostramos el dólar.
       }
     };
 
@@ -76,7 +129,7 @@ export default function FrontierInfo() {
           setBridge(firstAvailableBridge);
         }
       } catch {
-        // Si el servicio falla, no mostramos el tiempo.
+        // Si falla el servicio, no mostramos el tiempo.
       }
     };
 
@@ -95,65 +148,94 @@ export default function FrontierInfo() {
         .replace(/\./g, "")
     : "";
 
-  const bridgeText = bridge
-    ? `${bridge.name} · ${bridge.minutes} min`
-    : "Consultar cruces";
+  const WeatherIcon = weather
+    ? getWeatherIcon(weather.weatherCode)
+    : CloudSun;
 
-  return (
-    <section className="frontier-info">
-      <div className="frontier-info-inner">
+return (
+  <section className="frontier-info">
+    <div className="frontier-info-inner">
 
-        <div className="frontier-info-header">
-          <span>INFORMACIÓN FRONTERIZA</span>
-        </div>
-
-        <div className="frontier-info-grid">
-
-          {/* PUENTES */}
-          <div className="frontier-info-item">
-            <span className="frontier-info-label">PUENTES</span>
-
-            <div className="frontier-info-value">
-              {bridgeText}
-            </div>
-
-            <Link
-            href="/puentes"
-            className="frontier-info-detail frontier-info-link"
-            >
-            Ver cruces →
-            </Link>
-          </div>
-
-          {/* DÓLAR */}
-          <div className="frontier-info-item">
-            <span className="frontier-info-label">DÓLAR</span>
-
-            <div className="frontier-info-value">
-              {exchange ? `$${exchange.rate.toFixed(2)}` : "—"}
-            </div>
-
-            <span className="frontier-info-detail">
-              USD / MXN · FIX Banxico
-              {formattedExchangeDate && ` · ${formattedExchangeDate}`}
-            </span>
-          </div>
-
-          {/* CLIMA */}
-          <div className="frontier-info-item">
-            <span className="frontier-info-label">CLIMA</span>
-
-            <div className="frontier-info-value">
-              {weather ? `${weather.temperature} °C` : "—"}
-            </div>
-
-            <span className="frontier-info-detail">
-              Ciudad Juárez
-            </span>
-          </div>
-
-        </div>
+      <div className="frontier-info-header">
+        <span>INFORMACIÓN FRONTERIZA</span>
       </div>
-    </section>
-  );
+
+      <div className="frontier-info-grid">
+
+        {/* PUENTES */}
+        <Link
+          href="/puentes"
+          className="frontier-info-item frontier-info-item-link"
+        >
+          <div className="frontier-info-icon">
+            <Route size={24} strokeWidth={1.8} />
+          </div>
+
+          <div className="frontier-info-content">
+            <span className="frontier-info-label">
+              PUENTES FRONTERIZOS
+            </span>
+
+            <div className="frontier-info-data">
+              <strong>
+                {bridge ? `${bridge.minutes} min` : "Consultar"}
+              </strong>
+
+              <span>
+                {bridge ? bridge.name : " Ver cruces"}
+              </span>
+            </div>
+          </div>
+        </Link>
+
+        {/* DÓLAR */}
+        <div className="frontier-info-item">
+          <div className="frontier-info-icon">
+            <DollarSign size={24} strokeWidth={1.8} />
+          </div>
+
+          <div className="frontier-info-content">
+            <span className="frontier-info-label">
+              TIPO DE CAMBIO
+            </span>
+
+            <div className="frontier-info-data">
+              <strong>
+                {exchange
+                  ? `$${exchange.rate.toFixed(2)}`
+                  : "—"}
+              </strong>
+
+              <span>USD / MXN</span>
+            </div>
+          </div>
+        </div>
+
+        {/* CLIMA */}
+        <div className="frontier-info-item">
+          <div className="frontier-info-icon">
+            <WeatherIcon size={24} strokeWidth={1.8} />
+          </div>
+
+          <div className="frontier-info-content">
+            <span className="frontier-info-label">
+              CLIMA ACTUAL
+            </span>
+
+            <div className="frontier-info-data">
+              <strong>
+                {weather
+                  ? `${weather.temperature} °C`
+                  : "—"}
+              </strong>
+
+              <span>Ciudad Juárez</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+);
 }

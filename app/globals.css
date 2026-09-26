@@ -2574,7 +2574,8 @@ main.latest-articles .latest-header h1 {
 .news-filters {
   display: flex;
   align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 40px;
   padding-bottom: 14px;
   border-bottom: 1px solid #d8d4ce;
@@ -2632,11 +2633,23 @@ main.latest-articles .latest-header h1 {
   }
 
   .news-filters {
+    flex-wrap: nowrap;
     gap: 6px;
+
     margin-bottom: 32px;
-    padding-bottom: 12px;
+    padding: 0 24px 12px;
+
     overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+
     scrollbar-width: none;
+
+    /* La cinta sale ligeramente del margen del contenido */
+    margin-left: -24px;
+    margin-right: -24px;
   }
 
   .news-filters::-webkit-scrollbar {
@@ -2644,9 +2657,14 @@ main.latest-articles .latest-header h1 {
   }
 
   .news-filters a {
-    flex-shrink: 0;
+    flex: 0 0 auto;
+
     padding: 8px 13px;
+
     font-size: 9px;
+    white-space: nowrap;
+
+    scroll-snap-align: center;
   }
 
   .news-grid {
@@ -2679,7 +2697,11 @@ main.latest-articles .latest-header h1 {
   }
 
   .news-filters {
+    margin-left: -18px;
+    margin-right: -18px;
     margin-bottom: 28px;
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .news-filters a {

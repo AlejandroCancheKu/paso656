@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 
 const filters = [
   { label: "Todas", href: "/noticias" },
@@ -24,18 +25,32 @@ const filters = [
 
 export default function NewsFilters() {
   const pathname = usePathname();
+  const activeFilterRef = useRef<HTMLAnchorElement | null>(null);
+
+  useEffect(() => {
+    activeFilterRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [pathname]);
 
   return (
     <div className="news-filters" aria-label="Filtrar noticias">
-      {filters.map((filter) => (
-        <Link
-          key={filter.href}
-          href={filter.href}
-          className={pathname === filter.href ? "active" : ""}
-        >
-          {filter.label}
-        </Link>
-      ))}
+      {filters.map((filter) => {
+        const isActive = pathname === filter.href;
+
+        return (
+          <Link
+            key={filter.href}
+            href={filter.href}
+            ref={isActive ? activeFilterRef : null}
+            className={isActive ? "active" : ""}
+          >
+            {filter.label}
+          </Link>
+        );
+      })}
     </div>
   );
 }

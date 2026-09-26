@@ -391,7 +391,7 @@ body {
 .latest-articles {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 80px 40px;
+  padding: 64px 40px;
 }
 
 .latest-header {
@@ -532,7 +532,7 @@ main.latest-articles .latest-header h1 {
 
 @media (max-width: 768px) {
   .latest-articles {
-    padding: 40px 24px;
+    padding: 24px 24px 40px;
   }
 
   .latest-header {
@@ -1140,7 +1140,7 @@ main.latest-articles .latest-header h1 {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 90px 40px 120px;
+  padding: 64px 40px 120px;
 }
 
 .static-page-header {
@@ -1211,7 +1211,7 @@ main.latest-articles .latest-header h1 {
 
 @media (max-width: 768px) {
   .static-page {
-    padding: 64px 24px 80px;
+    padding: 24px 24px 80px;
   }
 
   .static-page-header {
@@ -1645,7 +1645,7 @@ main.latest-articles .latest-header h1 {
 .about-hero {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 100px 40px 120px;
+  padding: 64px 40px 120px;
 }
 
 .about-label {
@@ -1881,7 +1881,7 @@ main.latest-articles .latest-header h1 {
 
 @media (max-width: 768px) {
   .about-hero {
-    padding: 64px 24px 80px;
+    padding: 24px 24px 80px;
   }
 
   .about-label {
@@ -2616,7 +2616,7 @@ main.latest-articles .latest-header h1 {
 
 @media (max-width: 768px) {
   .news-page {
-    padding: 44px 0 65px;
+    padding: 24px 0 65px;
   }
 
   .news-page-inner {

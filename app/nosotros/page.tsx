@@ -19,8 +19,6 @@ export default function NosotrosPage() {
 
         <div className="about-hero-grid">
           <div>
-            <p className="about-brand">paso656</p>
-
             <h1>
               Periodismo
               <br />

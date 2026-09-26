@@ -4,19 +4,22 @@ import ArticleCard from "@/app/components/ArticleCard";
 import { getPosts } from "@/app/lib/wordpress";
 
 export const metadata: Metadata = {
-  title: "Noticias Nacionales",
+  title: "Noticias Internacionales",
   description:
-    "Las noticias más importantes de México. Información nacional desde paso656.",
+    "Las noticias más relevantes del mundo. Información internacional desde paso656.",
   alternates: {
-    canonical: "https://paso656.com/noticias/nacional",
+    canonical: "https://paso656.com/noticias/internacional",
   },
 };
 
-export default async function NacionalNewsPage() {
+export default async function InternacionalNewsPage() {
   const articles = await getPosts();
 
-  const nacionalNews = articles
-    .filter((article) => article.category.toLowerCase() === "nacional")
+  const internacionalNews = articles
+    .filter(
+      (article) =>
+        article.category.toLowerCase() === "internacional"
+    )
     .sort(
       (a, b) =>
         new Date(b.dateRaw).getTime() -
@@ -30,17 +33,17 @@ export default async function NacionalNewsPage() {
         <header className="news-header">
           <span>NOTICIAS</span>
 
-          <h1>Nacional</h1>
+          <h1>Internacional</h1>
 
           <p>
-            Las noticias más importantes de México.
+            Las noticias más relevantes del mundo.
           </p>
         </header>
 
         <NewsFilters />
 
         <div className="news-grid">
-          {nacionalNews.map((article) => (
+          {internacionalNews.map((article) => (
             <ArticleCard
               key={article.id}
               slug={article.slug}
@@ -55,9 +58,9 @@ export default async function NacionalNewsPage() {
           ))}
         </div>
 
-        {nacionalNews.length === 0 && (
+        {internacionalNews.length === 0 && (
           <p className="no-articles">
-            No hay noticias Nacionales disponibles.
+            No hay noticias internacionales disponibles.
           </p>
         )}
 

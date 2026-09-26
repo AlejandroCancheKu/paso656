@@ -4,19 +4,22 @@ import ArticleCard from "@/app/components/ArticleCard";
 import { getPosts } from "@/app/lib/wordpress";
 
 export const metadata: Metadata = {
-  title: "Noticias Nacionales",
+  title: "Noticias de Cultura",
   description:
-    "Las noticias más importantes de México. Información nacional desde paso656.",
+    "Información y noticias sobre cultura, arte y actividades culturales desde paso656.",
   alternates: {
-    canonical: "https://paso656.com/noticias/nacional",
+    canonical: "https://paso656.com/noticias/cultura",
   },
 };
 
-export default async function NacionalNewsPage() {
+export default async function CulturaNewsPage() {
   const articles = await getPosts();
 
-  const nacionalNews = articles
-    .filter((article) => article.category.toLowerCase() === "nacional")
+  const culturaNews = articles
+    .filter(
+      (article) =>
+        article.category.toLowerCase() === "cultura"
+    )
     .sort(
       (a, b) =>
         new Date(b.dateRaw).getTime() -
@@ -30,17 +33,18 @@ export default async function NacionalNewsPage() {
         <header className="news-header">
           <span>NOTICIAS</span>
 
-          <h1>Nacional</h1>
+          <h1>Cultura</h1>
 
           <p>
-            Las noticias más importantes de México.
+            Información y actualidad sobre cultura, arte y actividades
+            culturales.
           </p>
         </header>
 
         <NewsFilters />
 
         <div className="news-grid">
-          {nacionalNews.map((article) => (
+          {culturaNews.map((article) => (
             <ArticleCard
               key={article.id}
               slug={article.slug}
@@ -55,9 +59,9 @@ export default async function NacionalNewsPage() {
           ))}
         </div>
 
-        {nacionalNews.length === 0 && (
+        {culturaNews.length === 0 && (
           <p className="no-articles">
-            No hay noticias Nacionales disponibles.
+            No hay noticias de Cultura disponibles.
           </p>
         )}
 

@@ -58,7 +58,7 @@ export default async function ClimaNewsPage() {
 
         {climaNews.length === 0 && (
           <p className="no-articles">
-            No hay noticias del clima disponibles.
+            No hay noticias del Clima disponibles.
           </p>
         )}
 

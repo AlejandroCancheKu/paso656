@@ -4,19 +4,22 @@ import ArticleCard from "@/app/components/ArticleCard";
 import { getPosts } from "@/app/lib/wordpress";
 
 export const metadata: Metadata = {
-  title: "Noticias Nacionales",
+  title: "Noticias de Economía",
   description:
-    "Las noticias más importantes de México. Información nacional desde paso656.",
+    "Información y noticias de economía, finanzas y actividad económica desde paso656.",
   alternates: {
-    canonical: "https://paso656.com/noticias/nacional",
+    canonical: "https://paso656.com/noticias/economia",
   },
 };
 
-export default async function NacionalNewsPage() {
+export default async function EconomiaNewsPage() {
   const articles = await getPosts();
 
-  const nacionalNews = articles
-    .filter((article) => article.category.toLowerCase() === "nacional")
+  const economiaNews = articles
+    .filter(
+      (article) =>
+        article.category.toLowerCase() === "economía"
+    )
     .sort(
       (a, b) =>
         new Date(b.dateRaw).getTime() -
@@ -30,17 +33,18 @@ export default async function NacionalNewsPage() {
         <header className="news-header">
           <span>NOTICIAS</span>
 
-          <h1>Nacional</h1>
+          <h1>Economía</h1>
 
           <p>
-            Las noticias más importantes de México.
+            Información sobre economía, finanzas y actividad económica
+            en Ciudad Juárez, Chihuahua y México.
           </p>
         </header>
 
         <NewsFilters />
 
         <div className="news-grid">
-          {nacionalNews.map((article) => (
+          {economiaNews.map((article) => (
             <ArticleCard
               key={article.id}
               slug={article.slug}
@@ -55,9 +59,9 @@ export default async function NacionalNewsPage() {
           ))}
         </div>
 
-        {nacionalNews.length === 0 && (
+        {economiaNews.length === 0 && (
           <p className="no-articles">
-            No hay noticias Nacionales disponibles.
+            No hay noticias de Economía disponibles.
           </p>
         )}
 

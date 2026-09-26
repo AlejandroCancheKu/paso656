@@ -57,7 +57,7 @@ export default async function EstatalNewsPage() {
 
         {estatalNews.length === 0 && (
           <p className="no-articles">
-            No hay noticias estatales disponibles.
+            No hay noticias Estatales disponibles.
           </p>
         )}
 

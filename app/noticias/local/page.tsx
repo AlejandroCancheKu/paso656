@@ -57,7 +57,7 @@ export default async function LocalNewsPage() {
 
         {localNews.length === 0 && (
           <p className="no-articles">
-            No hay noticias locales disponibles.
+            No hay noticias Locales disponibles.
           </p>
         )}
 

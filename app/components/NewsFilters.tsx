@@ -8,6 +8,7 @@ const filters = [
   { label: "Local", href: "/noticias/local" },
   { label: "Estatal", href: "/noticias/estatal" },
   { label: "Nacional", href: "/noticias/nacional" },
+  { label: "Clima", href: "/noticias/clima" },
 ];
 
 export default function NewsFilters() {

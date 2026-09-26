@@ -2572,12 +2572,15 @@ main.latest-articles .latest-header h1 {
 }
 
 .news-filters {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(8, max-content);
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: start;
   gap: 8px;
+
   margin-bottom: 40px;
   padding-bottom: 14px;
+
   border-bottom: 1px solid #d8d4ce;
 }
 
@@ -2633,6 +2636,7 @@ main.latest-articles .latest-header h1 {
   }
 
   .news-filters {
+    display: flex;
     flex-wrap: nowrap;
     gap: 6px;
 
@@ -2647,7 +2651,6 @@ main.latest-articles .latest-header h1 {
 
     scrollbar-width: none;
 
-    /* La cinta sale ligeramente del margen del contenido */
     margin-left: -24px;
     margin-right: -24px;
   }

@@ -2530,7 +2530,7 @@ main.latest-articles .latest-header h1 {
 
 .news-page {
   width: 100%;
-  padding: 64px 0 90px;
+  padding: 24px 0 90px;
 }
 
 .news-page-inner {
@@ -2616,7 +2616,7 @@ main.latest-articles .latest-header h1 {
 
 @media (max-width: 768px) {
   .news-page {
-    padding: 44px 0 65px;
+    padding: 20px 0 65px;
   }
 
   .news-page-inner {

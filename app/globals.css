@@ -253,7 +253,7 @@ body {
 .featured-article {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 60px 40px;
+  padding: 40px 40px;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 0;
@@ -350,7 +350,7 @@ body {
   }
 
   .featured-article {
-    padding: 40px 24px 56px;
+    padding: 20px 24px 56px;
     grid-template-columns: 1fr;
     gap: 0;
   }
@@ -2718,12 +2718,12 @@ main.latest-articles .latest-header h1 {
 
 .banners-section {
   width: 100%;
-  padding: 24px 20px;
+  padding: 24px 40px;
 }
 
 .banners-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -2731,7 +2731,7 @@ main.latest-articles .latest-header h1 {
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0;
   background: #f5f3ee;
 }
 
@@ -2780,11 +2780,11 @@ main.latest-articles .latest-header h1 {
 
 @media (max-width: 768px) {
   .banners-section {
-    padding: 16px 12px;
+    padding: 16px 24px;
   }
 
   .banners-carousel {
-    border-radius: 6px;
+    border-radius: 0;
   }
 
   .banner-dots {

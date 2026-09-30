@@ -21,7 +21,7 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
           >
             <Image
-              src="/images/logo-paso656-x.png"
+              src="/images/logo-paso656-v1.png"
               alt="paso656 - Periodismo desde la frontera."
               width={500}
               height={170}

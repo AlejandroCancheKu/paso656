@@ -137,42 +137,23 @@ body {
 .header-inner {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 28px 40px;
+  padding: 10px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 7px;
-}
-
-.logo-name {
   display: block;
-  color: #111111;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 36px;
-  font-weight: 400;
-  letter-spacing: -2px;
-  line-height: 1;
+  flex-shrink: 0;
+  line-height: 0;
 }
 
-.logo-name strong {
-  color: #b6533a;
-  font-weight: 700;
-}
-
-.logo-tagline {
-  color: #77736d;
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 1.6px;
-  line-height: 1;
-  text-transform: uppercase;
+.logo-image {
+  display: block;
+  width: 220px;
+  height: auto;
+  object-fit: contain;
 }
 
 .main-nav {
@@ -217,8 +198,8 @@ body {
 }
 
 @media (max-width: 768px) {
-  .logo-name {
-    font-size: 32px;
+  .logo-image {
+    width: 180px;
   }
 
   .logo-tagline {
@@ -227,7 +208,7 @@ body {
   }
 
   .header-inner {
-    padding: 20px 24px;
+    padding: 12px 24px;
     position: relative;
     flex-wrap: wrap;
   }
@@ -2284,10 +2265,9 @@ main.latest-articles .latest-header h1 {
   width: 100%;
   border-top: 1px solid #111111;
 }
-
 .bridges-board-head {
   display: grid;
-  grid-template-columns: 1fr 180px;
+  grid-template-columns: 1fr 220px;
   padding: 11px 0;
   border-bottom: 1px solid #d9d5ce;
   font-size: 8px;
@@ -2302,7 +2282,7 @@ main.latest-articles .latest-header h1 {
 
 .bridge-row {
   display: grid;
-  grid-template-columns: 42px 1fr 180px;
+  grid-template-columns: 42px 1fr 220px;
   align-items: center;
   min-height: 118px;
   border-bottom: 1px solid #d9d5ce;
@@ -2343,23 +2323,31 @@ main.latest-articles .latest-header h1 {
 
 .bridge-row-time {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: flex-end;
-  gap: 7px;
+  gap: 12px;
 }
 
 .bridge-row-time strong {
+  width: 55px;
+  flex-shrink: 0;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 48px;
   line-height: 1;
   font-weight: 400;
   color: #111111;
+  text-align: right;
 }
 
 .bridge-row-time span {
+  width: 150px;
+  flex-shrink: 0;
   font-size: 10px;
   letter-spacing: 0.5px;
+  line-height: 1.3;
   color: #77736d;
+  text-align: left;
+  white-space: nowrap;
 }
 
 .bridges-footer {
@@ -2407,13 +2395,13 @@ main.latest-articles .latest-header h1 {
   .bridges-header p {
     font-size: 13px;
   }
-
+  
   .bridges-board-head {
-    grid-template-columns: 1fr 130px;
+    grid-template-columns: 1fr 180px;
   }
 
   .bridge-row {
-    grid-template-columns: 30px 1fr 130px;
+    grid-template-columns: 30px 1fr 180px;
     min-height: 100px;
   }
 
@@ -2430,14 +2418,20 @@ main.latest-articles .latest-header h1 {
     font-size: 8px;
   }
 
+  .bridge-row-time {
+    gap: 8px;
+  }
+
   .bridge-row-time strong {
+    width: 42px;
     font-size: 38px;
   }
 
   .bridge-row-time span {
+    width: 130px;
     font-size: 9px;
+    white-space: nowrap;
   }
-
   .bridges-footer {
     align-items: flex-start;
     flex-direction: column;
@@ -2471,15 +2465,15 @@ main.latest-articles .latest-header h1 {
     margin-top: 12px;
     font-size: 12px;
   }
-
+  
   .bridges-board-head {
-    grid-template-columns: 1fr 95px;
+    grid-template-columns: 1fr 125px;
     font-size: 7px;
     letter-spacing: 1px;
   }
 
   .bridge-row {
-    grid-template-columns: 24px 1fr 95px;
+    grid-template-columns: 24px 1fr 125px;
     min-height: 92px;
   }
 
@@ -2498,15 +2492,19 @@ main.latest-articles .latest-header h1 {
   }
 
   .bridge-row-time {
-    gap: 4px;
+    gap: 5px;
   }
 
   .bridge-row-time strong {
+    width: 28px;
     font-size: 31px;
   }
 
   .bridge-row-time span {
+    width: 92px;
     font-size: 8px;
+    line-height: 1.2;
+    white-space: normal;
   }
 
   .bridges-footer {

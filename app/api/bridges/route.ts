@@ -6,7 +6,7 @@ export async function GET() {
     const results = await getBridges();
 
     return NextResponse.json({
-      source: "Fideicomiso de Puentes Fronterizos de Chihuahua / TTI",
+      source: "U.S. Customs and Border Protection (CBP)",
       bridges: results,
     });
   } catch {

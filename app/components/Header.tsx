@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import InfoBar from "@/app/components/InfoBar";
 
@@ -14,20 +15,20 @@ export default function Header() {
       <header className="site-header">
         <div className="header-inner">
 
-        <Link
-          href="/"
-          className="logo"
-          onClick={() => setMenuOpen(false)}
-        >
-          <span className="logo-name">
-            <span>paso</span>
-            <strong>656</strong>
-          </span>
-
-          <span className="logo-tagline">
-            Periodismo desde la frontera
-          </span>
-        </Link>
+          <Link
+            href="/"
+            className="logo"
+            onClick={() => setMenuOpen(false)}
+          >
+            <Image
+              src="/images/logo-paso656.png"
+              alt="paso656 - Periodismo desde la frontera"
+              width={500}
+              height={170}
+              priority
+              className="logo-image"
+            />
+          </Link>
 
           <button
             className="menu-toggle"

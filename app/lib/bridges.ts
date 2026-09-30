@@ -2,73 +2,126 @@ export type Bridge = {
   name: string;
   minutes: number | null;
   direction: string;
+  status: "available" | "pending" | "closed";
 };
 
-const bridges = [
+type CBPLane = {
+  update_time: string;
+  operational_status: string;
+  delay_minutes: string;
+  lanes_open: string;
+};
+
+type CBPPort = {
+  port_number: string;
+  border: string;
+  port_name: string;
+  crossing_name: string;
+  hours: string;
+  date: string;
+  time: string;
+  port_status: string;
+  passenger_vehicle_lanes: {
+    standard_lanes: CBPLane;
+  };
+};
+
+const CBP_URL = "https://bwt.cbp.gov/api/bwtpublicmod";
+
+const bridgeConfig = [
   {
     name: "Paso del Norte",
-    url: "https://www.puentesfronterizos.gob.mx/puente-internacional-paso-del-norte.php",
+    portNumber: "240202",
   },
   {
     name: "Lerdo-Stanton",
-    url: "https://www.puentesfronterizos.gob.mx/puente-internacional-lerdo-stanton.php",
+    portNumber: "240204",
   },
   {
     name: "Zaragoza-Ysleta",
-    url: "https://www.puentesfronterizos.gob.mx/puente-internacional-zaragoza-ysleta.php",
+    portNumber: "240203",
   },
   {
     name: "Guadalupe-Tornillo",
-    url: "https://www.puentesfronterizos.gob.mx/puente-internacional-guadalupe-tornillo.php",
+    portNumber: "240401",
   },
 ];
 
-function extractMexicoToUS(html: string): number | null {
-  const text = html
-    .replace(/<script[\s\S]*?<\/script>/gi, "")
-    .replace(/<style[\s\S]*?<\/style>/gi, "")
-    .replace(/<[^>]+>/g, " ")
-    .replace(/\s+/g, " ");
+function getMinutes(port: CBPPort | undefined): number | null {
+  if (!port) {
+    return null;
+  }
 
-  const match = text.match(
-    /México\s+a\s+Estados\s+Unidos\s+(\d+)\s+minutos/i
-  );
+  const delay =
+    port.passenger_vehicle_lanes?.standard_lanes?.delay_minutes;
 
-  return match ? Number(match[1]) : null;
+  if (delay === undefined || delay === null || delay.trim() === "") {
+    return null;
+  }
+
+  const minutes = Number(delay);
+
+  return Number.isFinite(minutes) ? minutes : null;
+}
+
+function getStatus(
+  port: CBPPort | undefined,
+  minutes: number | null
+): Bridge["status"] {
+  if (!port) {
+    return "pending";
+  }
+
+  if (port.port_status?.toLowerCase() === "closed") {
+    return "closed";
+  }
+
+  if (minutes !== null) {
+    return "available";
+  }
+
+  return "pending";
 }
 
 export async function getBridges(): Promise<Bridge[]> {
-  return Promise.all(
-    bridges.map(async (bridge) => {
-      try {
-        const response = await fetch(bridge.url, {
-          next: {
-            revalidate: 300,
-          },
-        });
+  try {
+    const response = await fetch(CBP_URL, {
+      headers: {
+        Accept: "application/json",
+      },
+      next: {
+        revalidate: 300,
+      },
+    });
 
-        if (!response.ok) {
-          return {
-            name: bridge.name,
-            minutes: null,
-            direction: "México → Estados Unidos",
-          };
-        }
+    if (!response.ok) {
+      throw new Error(`CBP respondió con ${response.status}`);
+    }
 
-        const html = await response.text();
+    const data: CBPPort[] = await response.json();
 
-        return {
-          name: bridge.name,
-          minutes: extractMexicoToUS(html),
-          direction: "México → Estados Unidos",
-        };
-      } catch {
-        return {
-          name: bridge.name,
-          minutes: null,
-          direction: "México → Estados Unidos",
-        };
-      }
-    })
-  );
+    return bridgeConfig.map((bridge) => {
+      const port = data.find(
+        (item) => item.port_number === bridge.portNumber
+      );
+
+      const minutes = getMinutes(port);
+
+      return {
+        name: bridge.name,
+        minutes,
+        direction: "México → Estados Unidos",
+        status: getStatus(port, minutes),
+      };
+    });
+  } catch (error) {
+    console.error("Error obteniendo tiempos de CBP:", error);
+
+    return bridgeConfig.map((bridge) => ({
+      name: bridge.name,
+      minutes: null,
+      direction: "México → Estados Unidos",
+      status: "pending",
+    }));
+  }
 }

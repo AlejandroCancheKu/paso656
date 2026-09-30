@@ -344,7 +344,7 @@ body {
   }
 
   .featured-image img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 3;
     height: auto;
     object-fit: cover;
   }
@@ -445,7 +445,7 @@ main.latest-articles .latest-header h1 {
 
 .article-card-image img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 2 / 2;
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;

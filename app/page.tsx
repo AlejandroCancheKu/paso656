@@ -7,8 +7,8 @@ import LatestNews from "@/app/components/LatestNews";
 export default function Home() {
   return (
     <main>
-      <FrontierInfo />
       <Banners />
+      <FrontierInfo />
       <FeaturedArticle />
       <LatestNews />
       <LatestArticles />

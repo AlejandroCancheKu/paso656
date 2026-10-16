@@ -1,3 +1,4 @@
+import { decode } from "he";
 const WORDPRESS_API_URL = process.env.WORDPRESS_API_URL;
 
 if (!WORDPRESS_API_URL) {
@@ -39,11 +40,12 @@ function mapPost(post: any): Article {
   return {
     id: post.id,
     slug: post.slug,
-    title: post.title.rendered,
-    excerpt: post.excerpt.rendered
-      .replace(/<[^>]*>/g, "")
-      .replace(/&hellip;/g, "...")
-      .trim(),
+    title: decode(post.title.rendered),
+    excerpt: decode(
+      post.excerpt.rendered
+        .replace(/<[^>]*>/g, "")
+        .trim()
+    ),
     content: post.content.rendered,
     category,
     section: newsCategory ? "Noticias" : category,

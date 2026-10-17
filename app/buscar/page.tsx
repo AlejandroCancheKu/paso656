@@ -1,6 +1,10 @@
+
 import type { Metadata } from "next";
 import ArticleCard from "@/app/components/ArticleCard";
-import { searchPosts } from "@/app/lib/wordpress";
+import {
+  searchPosts,
+  getPostViews,
+} from "@/app/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Buscar",
@@ -23,7 +27,12 @@ export default async function SearchPage({
   const params = await searchParams;
   const query = params.q?.trim() ?? "";
 
-  const articles = query ? await searchPosts(query) : [];
+const [articles, views] = await Promise.all([
+  query ? searchPosts(query) : Promise.resolve([]),
+  query
+    ? getPostViews()
+    : Promise.resolve({} as Record<number, number>),
+]);
 
   return (
     <main className="search-page">
@@ -65,6 +74,7 @@ export default async function SearchPage({
                   author={article.author}
                   date={article.date}
                   image={article.image}
+                  views={views[article.id] ?? 0}
                 />
               ))}
             </div>

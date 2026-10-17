@@ -1,9 +1,11 @@
+
 import Image from "next/image";
 import Link from "next/link";
-import { getPosts } from "@/app/lib/wordpress";
+import { getPosts, getPostViews } from "@/app/lib/wordpress";
 
 export default async function LatestNews() {
   const articles = await getPosts();
+  const views = await getPostViews();
 
   const latestNews = articles
     .filter((article) => article.section === "Noticias")
@@ -57,7 +59,32 @@ export default async function LatestNews() {
 
               <p>{article.excerpt}</p>
 
-              <time>{article.date}</time>
+              <div className="latest-news-card-meta">
+                <time>{article.date}</time>
+
+                <span
+                  className="latest-news-card-views"
+                  aria-label={`${views[article.id] ?? 0} lecturas`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+
+                  {views[article.id] ?? 0}
+                </span>
+              </div>
             </div>
           </article>
         ))}

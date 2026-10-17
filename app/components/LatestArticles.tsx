@@ -1,8 +1,10 @@
+
 import ArticleCard from "./ArticleCard";
-import { getArticles } from "@/app/lib/wordpress";
+import { getArticles, getPostViews } from "@/app/lib/wordpress";
 
 export default async function LatestArticles() {
   const articles = await getArticles();
+  const views = await getPostViews();
 
   const sortedArticles = articles
     .sort(
@@ -39,6 +41,7 @@ export default async function LatestArticles() {
             author={article.author}
             date={article.date}
             image={article.image}
+            views={views[article.id] ?? 0}
           />
         ))}
       </div>

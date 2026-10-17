@@ -2796,3 +2796,46 @@ main.latest-articles .latest-header h1 {
     height: 7px;
   }
 }
+
+/* =========================
+   VIEWS COUNTER - NOTICIAS
+   ========================= */
+
+.latest-news-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.latest-news-card-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.latest-news-card-views svg {
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   VIEWS COUNTER ARTICULOS
+   ========================= */
+
+.article-card-views {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #777;
+  white-space: nowrap;
+}
+
+.article-card-views svg {
+  flex-shrink: 0;
+}

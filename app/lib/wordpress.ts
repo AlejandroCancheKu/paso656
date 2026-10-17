@@ -160,3 +160,35 @@ export function getReadingTime(content: string): number {
 
   return Math.max(1, Math.ceil(words.length / wordsPerMinute));
 }
+
+
+export type PostViews = {
+  post_id: number;
+  lecturas: number;
+};
+
+export async function getPostViews(): Promise<Record<number, number>> {
+  try {
+    const response = await fetch(
+      "https://cms.paso656.com/wp-json/paso656/v1/populares",
+      {
+        next: {
+          revalidate: 60,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("No se pudieron consultar las lecturas");
+    }
+
+    const data: PostViews[] = await response.json();
+
+    return Object.fromEntries(
+      data.map((item) => [item.post_id, item.lecturas])
+    );
+  } catch (error) {
+    console.error("Error al obtener las lecturas:", error);
+    return {};
+  }
+}

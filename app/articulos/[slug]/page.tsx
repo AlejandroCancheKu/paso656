@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import ViewTracker from "@/app/components/ViewTracker";
 import ShareButtons from "@/app/components/ShareButtons";
 import RelatedArticles from "@/app/components/RelatedArticles";
 import ArticleSchema from "@/app/components/ArticleSchema";
@@ -83,6 +84,7 @@ export default async function ArticlePage({
 
   return (
     <main className="article-page">
+      <ViewTracker postId={article.id} />
       <ArticleSchema article={article} />
 
       <header className="article-header">

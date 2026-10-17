@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import NewsFilters from "@/app/components/NewsFilters";
 import ArticleCard from "@/app/components/ArticleCard";
-import { getPosts } from "@/app/lib/wordpress";
+import { getPosts, getPostViews } from "@/app/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Noticias",
@@ -14,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function NoticiasPage() {
   const articles = await getPosts();
+  const views = await getPostViews();
 
   const newsArticles = articles
     .filter(
@@ -54,6 +55,7 @@ export default async function NoticiasPage() {
               author={article.author}
               date={article.date}
               image={article.image}
+              views={views[article.id] ?? 0}
             />
           ))}
         </div>

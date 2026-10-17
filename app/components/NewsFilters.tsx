@@ -17,6 +17,7 @@ const filters = [
   { label: "Cultura", href: "/noticias/cultura" },
   { label: "Deportes", href: "/noticias/deportes" },
   { label: "Clima", href: "/noticias/clima" },
+  { label: "Salud", href: "/noticias/salud" },
   { label: "Ecología", href: "/noticias/ecologia" },
   { label: "Protección Civil", href: "/noticias/proteccion-civil" },
   { label: "Obras Públicas", href: "/noticias/obras-publicas" },

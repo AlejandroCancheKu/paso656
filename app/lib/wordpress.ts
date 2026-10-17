@@ -31,7 +31,24 @@ function mapPost(post: any): Article {
 
   const category = terms[0]?.name ?? "";
 
-  const newsCategories = ["Local", "Estatal", "Nacional","Internacional","Politica","Economía","Seguridad","Educación","Cultura","Deportes","Clima","Ecología","Protección Civil","Obras Públicas","Vialidad"];
+  const newsCategories = [
+    "Local",
+    "Estatal",
+    "Nacional",
+    "Internacional",
+    "Politica",
+    "Economía",
+    "Seguridad",
+    "Educación",
+    "Cultura",
+    "Deportes",
+    "Clima",
+    "Salud",
+    "Ecología",
+    "Protección Civil",
+    "Obras Públicas",
+    "Vialidad",
+  ];
 
   const newsCategory = terms.find((term: any) =>
     newsCategories.includes(term.name)

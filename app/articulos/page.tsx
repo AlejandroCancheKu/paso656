@@ -1,6 +1,7 @@
+
 import type { Metadata } from "next";
 import ArticleCard from "@/app/components/ArticleCard";
-import { getArticles } from "@/app/lib/wordpress";
+import { getArticles, getPostViews } from "@/app/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Artículos",
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 
 export default async function ArticlesPage() {
   const articles = await getArticles();
+  const views = await getPostViews();
 
   const sortedArticles = articles.sort(
     (a, b) =>
@@ -41,6 +43,7 @@ export default async function ArticlesPage() {
             author={article.author}
             date={article.date}
             image={article.image}
+            views={views[article.id] ?? 0}
           />
         ))}
       </div>

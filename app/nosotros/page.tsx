@@ -44,7 +44,7 @@ export default function NosotrosPage() {
 
         <div className="about-border-content">
           <p className="about-border-lead">
-            <span>Paso</span>
+            <span>paso</span>
             <strong>656</strong> nace para mirar de cerca lo que ocurre aquí.
           </p>
 

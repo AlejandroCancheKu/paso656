@@ -38,6 +38,13 @@ export default function ContactoPage() {
             Ciudad Juárez o quieres proponer un tema
             para nuestra cobertura, puedes ponerte en
             contacto con nosotros.
+            <br />
+            <a
+              href="mailto:contacto@paso656.com"
+              className="about-label"
+            >
+              contacto@paso656.com
+            </a>
           </p>
         </div>
 

@@ -9,8 +9,8 @@ import Newsletter from "@/app/components/Newsletter";
 export default function Home() {
   return (
     <main>
-      <Banners />
       <FrontierInfo />
+      <Banners />
       <FeaturedArticle />
       <LatestNews />
       <LatestArticles />

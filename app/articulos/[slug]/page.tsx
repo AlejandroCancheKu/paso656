@@ -71,7 +71,7 @@ export default async function ArticlePage({
   const article = await getArticle(slug);
 
   if (!article) {
-    return <h1>Artículo no encontrado</h1>;
+    notFound();
   }
 
   const allArticles = await getArticles();

@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
-import { getPosts } from "@/app/lib/wordpress";
+import { getArticles, getPosts } from "@/app/lib/wordpress";
 
 export const revalidate = 60;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getPosts();
+  const [posts, articles] = await Promise.all([
+    getPosts(),
+    getArticles(),
+  ]);
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -39,14 +42,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  const postPages: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: `https://paso656.com${
-      post.section === "Noticias"
-        ? "/noticias"
-        : "/articulos"
-    }/${post.slug}`,
-    lastModified: new Date(post.dateRaw),
+  // Mismo criterio que las páginas: /noticias = posts de sección Noticias,
+  // /articulos = posts de la categoría Artículos. Así el sitemap
+  // nunca lista URLs que terminan en "no encontrado".
+  const newsPages: MetadataRoute.Sitemap = posts
+    .filter((post) => post.section === "Noticias")
+    .map((post) => ({
+      url: `https://paso656.com/noticias/${post.slug}`,
+      lastModified: new Date(post.modifiedRaw),
+    }));
+
+  const articlePages: MetadataRoute.Sitemap = articles.map((article) => ({
+    url: `https://paso656.com/articulos/${article.slug}`,
+    lastModified: new Date(article.modifiedRaw),
   }));
 
-  return [...staticPages, ...postPages];
+  return [...staticPages, ...newsPages, ...articlePages];
 }

@@ -76,7 +76,7 @@ export default async function NewsPage({
   const article = await getNewsArticle(slug);
 
   if (!article) {
-    return <h1>Noticia no encontrada</h1>;
+    notFound();
   }
 
   const allNews = await getPosts();
